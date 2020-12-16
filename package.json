@@ -1,0 +1,65 @@
+{
+  "name": "golf-scorecard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start  -p $PORT",
+    "test": "jest",
+    "fix": "tsc --noEmit --incremental --project . && eslint --fix ."
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.9",
+    "@emotion/css": "^11.0.0",
+    "@emotion/react": "^11.1.2",
+    "lodash": "^4.17.20",
+    "next": "10.0.3",
+    "nookies": "^2.5.0",
+    "react": "17.0.1",
+    "react-aria": "^3.2.0",
+    "react-dom": "17.0.1",
+    "redis": "^3.0.2",
+    "smoothscroll-polyfill": "^0.4.4",
+    "typescript": "^4.1.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@react-types/button": "^3.3.0",
+    "@testing-library/dom": "^7.28.1",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.5.0",
+    "@types/cookie": "^0.4.0",
+    "@types/jest": "^26.0.18",
+    "@types/lodash": "^4.14.165",
+    "@types/node": "^14.14.11",
+    "@types/react": "^17.0.0",
+    "@types/redis": "^2.8.28",
+    "@types/redis-mock": "^0.17.0",
+    "@types/smoothscroll-polyfill": "^0.3.1",
+    "@types/uuid": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "babel-jest": "^26.6.3",
+    "cookie": "^0.4.1",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-jest-dom": "^3.6.3",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.2.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "jest": "^26.6.3",
+    "node-mocks-http": "^1.9.0",
+    "prettier": "^2.2.1",
+    "redis-mock": "^0.55.0"
+  },
+  "engines": {
+    "node": "14"
+  },
+  "cacheDirectories": [
+    ".next/cache"
+  ]
+}
