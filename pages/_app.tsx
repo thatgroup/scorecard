@@ -5,11 +5,11 @@ import Head from "next/head";
 
 import { background } from "../shared/colours";
 
-import smoothscroll from "smoothscroll-polyfill";
+// import smoothscroll from "smoothscroll-polyfill";
 
-if (typeof window !== "undefined") {
-  smoothscroll.polyfill();
-}
+// if (typeof window !== "undefined") {
+//   smoothscroll.polyfill();
+// }
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
@@ -42,11 +42,8 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
       <Head>
         <title>Glow Golf</title>
         <meta charSet="utf-8" />
-        <meta name="description" content="A crazy-golf score card" />
-        <meta
-          name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0"
-        />
+        <meta name="description" content="Glow Golf Scorecard" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://use.typekit.net/cia7xbp.css" />
       </Head>
       <Component {...pageProps} />
