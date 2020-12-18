@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import { getGame, updateGame } from "../../shared/db";
 import { getBlankScores } from "../../shared/getBlankScores";
+import { log } from "../../shared/log";
 import { validatePlayers } from "../../shared/validatePlayers";
 
 import isEqual from "lodash/isEqual";
@@ -33,6 +34,7 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
   const game = await getGame(gameId);
 
   if (!game) {
+    log(`Game not found: ${gameId}`);
     res.statusCode = 400;
     res.send("Game Not Found");
     return;
@@ -41,6 +43,7 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
   // Validate the list of players
   const postedPlayers = JSON.parse(req.body) as string[];
   if (!validatePlayers(postedPlayers)) {
+    log(`Invalid player list: ${postedPlayers}`);
     res.statusCode = 400;
     res.send("Player list is not valid");
     return;

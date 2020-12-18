@@ -1,6 +1,8 @@
 import redis from "redis";
 import { v4 } from "uuid";
 
+import { log } from "./log";
+
 const { REDIS_URL, REDIS_HOST, REDIS_PORT, REDIS_PASSWORD } = process.env || {};
 
 const redisUrl =
@@ -70,6 +72,7 @@ export async function createGame(): Promise<string> {
     id = v4();
   }
   // Create the game and return the id
+  log(`Creating Game ${id}`);
   await set(id, {
     players: [],
     scores: [],
@@ -83,6 +86,6 @@ export async function updateGame(id: string, updatedGame: Game): Promise<void> {
     // console.log(JSON.stringify(updatedGame));
     await set(id, updatedGame);
   } else {
-    // console.warn("Game not found:", id);
+    log(`Game not found: ${id}`);
   }
 }
