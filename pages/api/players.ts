@@ -59,8 +59,10 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
     }
     res.statusCode = 200;
     res.end();
+    log(`Setting ${postedPlayers.length} player(s) on game ${gameId}`);
   } catch (error) {
     res.statusCode = 400;
     res.send(error.message);
+    log(`Error setting players: ${error.message}`);
   }
 }
