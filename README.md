@@ -63,3 +63,6 @@ The start command needs to obey the `$PORT` evironment variable:
 ```
 
 When deploying for live usage, you need to make sure you are using a Redis instance which persists to disk (I think the cheapest non-free tier has this) and you need to ensure that that the eviction is set to `allkeys-lru` so that when we run out of memory (about 5,000 games) the old ones get purged first.
+```
+heroku redis:maxmemory --policy allkeys-lru --app glowgolfscorecard
+```
