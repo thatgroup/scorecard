@@ -71,7 +71,7 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
   if (validateScoresForHole(postedScores, hole, game.players) === false) {
     res.statusCode = 400;
     res.send("Scores are not valid");
-    log(`Scores are not valid: ${JSON.stringify(postedScores)}`);
+    log(`Scores are not valid for game ${gameId}: ${req.body}`);
     return;
   }
 

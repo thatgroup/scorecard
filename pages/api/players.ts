@@ -45,7 +45,7 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
   if (!validatePlayers(postedPlayers)) {
     log(`Invalid player list: ${postedPlayers}`);
     res.statusCode = 400;
-    res.send("Player list is not valid");
+    res.send(`Player list is not valid: ${req.body}`);
     return;
   }
 
