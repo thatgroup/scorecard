@@ -10,15 +10,14 @@ export interface Props {
 // from the top to the bottom (or 97% of the height)
 export function InternalSnowflake({ x, ttl }: Props): JSX.Element {
   const snowflake = css`
-    display: inline-block;
+    display: block;
     position: fixed;
     width: 0.5rem;
     height: 0.5rem;
     background: #ffffff;
     opacity: 0;
-    left: ${x}%;
     border-radius: 1rem;
-    animation: fall ${ttl}ms linear infinite;
+    will-change: scroll;
 
     @keyframes fall {
       0% {
@@ -36,7 +35,14 @@ export function InternalSnowflake({ x, ttl }: Props): JSX.Element {
       }
     }
   `;
-  return <div className={snowflake}></div>;
+
+  // If we use the style prop here, we don't keep adding emotionc stylesheets to the DOM forever!
+  return (
+    <div
+      style={{ left: `${x}%`, animation: `fall ${ttl}ms linear` }}
+      className={snowflake}
+    ></div>
+  );
 }
 
 export const Snowflake = memo(InternalSnowflake);
