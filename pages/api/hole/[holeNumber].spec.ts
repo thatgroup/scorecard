@@ -13,6 +13,10 @@ jest.mock("../../../shared/db", () => ({
   updateGame: jest.fn(),
 }));
 
+jest.mock("../../../shared/log", () => ({
+  log: jest.fn(),
+}));
+
 // const createGameMock = createGame as jest.Mock;
 const getGameMock = getGame as jest.Mock;
 // const updateGameMock = updateGame as jest.Mock;

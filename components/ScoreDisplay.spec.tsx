@@ -39,7 +39,7 @@ describe("<ScoreDisplay/>", () => {
   });
 
   it("handles null", () => {
-    const { getByText } = render(<ScoreDisplay score={null} />);
-    getByText("?");
+    const { container } = render(<ScoreDisplay score={null} />);
+    expect(container).toHaveTextContent("");
   });
 });

@@ -23,7 +23,7 @@ describe("<Winner/>", () => {
     const game: Game = { players, scores };
 
     const { getByText } = render(<Winner game={game} />);
-    getByText("adam");
+    getByText("adam - 18");
   });
 
   it("handles multiple winners", () => {
@@ -35,6 +35,6 @@ describe("<Winner/>", () => {
     const game: Game = { players, scores };
 
     const { getByText } = render(<Winner game={game} />);
-    getByText("adam, barry and clara");
+    getByText("adam, barry and clara - 18");
   });
 });
