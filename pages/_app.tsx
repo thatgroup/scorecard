@@ -5,12 +5,6 @@ import Head from "next/head";
 
 import { background } from "../shared/colours";
 
-// import smoothscroll from "smoothscroll-polyfill";
-
-// if (typeof window !== "undefined") {
-//   smoothscroll.polyfill();
-// }
-
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>
