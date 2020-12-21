@@ -1,5 +1,7 @@
+// Libraries
 import { render } from "@testing-library/react";
 
+// Components
 import { Content } from "./Content";
 
 describe("<Content/>", () => {

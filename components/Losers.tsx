@@ -1,5 +1,7 @@
+// Libraries
 import { css } from "@emotion/css";
 
+// Shared
 import { muted } from "../shared/colours";
 import { getLeaderBoard } from "../shared/getLeaderBoard";
 import { rankToText } from "../shared/rankToText";

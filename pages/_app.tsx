@@ -1,8 +1,11 @@
+// Libraries
 import { css, Global } from "@emotion/react";
 
+// Next.JS
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
+// Shared
 import { background } from "../shared/colours";
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
@@ -20,7 +23,6 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
             color: white;
             position: relative;
             min-height: 100vh;
-            // height: calc(100vh - calc(100vh - 100%));
             background-position: bottom;
           }
 

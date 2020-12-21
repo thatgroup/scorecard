@@ -1,5 +1,7 @@
+// Libraries
 import { css } from "@emotion/css";
 
+// Shared
 import { getLeaderBoard } from "../shared/getLeaderBoard";
 import { grammarJoin } from "../shared/grammarJoin";
 

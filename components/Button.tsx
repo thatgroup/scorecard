@@ -1,7 +1,10 @@
+// Libraries
 import { css, cx } from "@emotion/css";
 
+// Next.JS
 import Link from "next/link";
 
+// Shared
 import {
   background,
   buttonBlue,

@@ -1,7 +1,10 @@
+// Next.JS
 import type { NextApiRequest, NextApiResponse } from "next";
 
+// Shared
 import { getGame, updateGame } from "../../../shared/db";
 
+// Libraries
 import { serialize } from "cookie";
 import httpMocks from "node-mocks-http";
 
@@ -17,9 +20,7 @@ jest.mock("../../../shared/log", () => ({
   log: jest.fn(),
 }));
 
-// const createGameMock = createGame as jest.Mock;
 const getGameMock = getGame as jest.Mock;
-// const updateGameMock = updateGame as jest.Mock;
 
 const players = ["adam", "barry"];
 

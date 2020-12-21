@@ -1,10 +1,13 @@
+// Libraries
 import { memo, useCallback } from "react";
 import { css, cx } from "@emotion/css";
 
-import { muted, yellow } from "../shared/colours";
+// Shared
+import { yellow } from "../shared/colours";
 import { MAX_SCORE } from "../shared/constants";
 import { validateScore } from "../shared/validateScore";
 
+// Components
 import { ScoreButton } from "./ScoreButton";
 import { ScoreDisplay } from "./ScoreDisplay";
 
@@ -32,7 +35,6 @@ function InnerScoreInput({
     padding-bottom: 0.3em;
     overflow: hidden;
     text-overflow: ellipsis;
-    // color: ${muted};
   `;
 
   const scoreCell = css`

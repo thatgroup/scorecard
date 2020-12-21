@@ -1,5 +1,7 @@
+// Libraries
 import { css, cx } from "@emotion/css";
 
+// Shared
 import { MAX_SCORE } from "../shared/constants";
 import { faded } from "../shared/styles";
 import { validateScore } from "../shared/validateScore";

@@ -1,6 +1,8 @@
+// Libraries
 import isArray from "lodash/isArray";
 import uniq from "lodash/uniq";
 
+// Shared
 import {
   ACCEPTED_CHARACTERS_REGEX,
   MAX_PLAYER_NAME_LENGTH,

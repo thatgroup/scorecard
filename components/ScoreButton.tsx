@@ -1,6 +1,8 @@
+// Libraries
 import { ButtonHTMLAttributes, DetailedHTMLProps, memo } from "react";
 import { css, cx } from "@emotion/css";
 
+// Shared
 import { background, green, muted } from "../shared/colours";
 import { noLongPress } from "../shared/styles";
 

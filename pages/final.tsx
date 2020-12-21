@@ -1,8 +1,11 @@
+// Libraries
 import { css } from "@emotion/css";
 
+// Next.JS
 import Head from "next/head";
 import Image from "next/image";
 
+// Components
 import { Back } from "../components/Back";
 import { Button } from "../components/Button";
 import { Footer } from "../components/Footer";

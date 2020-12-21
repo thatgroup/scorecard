@@ -1,13 +1,17 @@
+// Libraries
 import { css } from "@emotion/css";
 
+// Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import Head from "next/head";
 
+// Components
 import { Back } from "../components/Back";
 import { Content } from "../components/Content";
 import { Divider } from "../components/Divider";
 import { Menu } from "../components/Menu";
 
+// Shared
 import { green, muted } from "../shared/colours";
 
 interface Props {

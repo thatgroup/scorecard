@@ -1,15 +1,19 @@
+// Libraries
 import { css } from "@emotion/css";
 
+// Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
+// Components
 import { Back } from "../components/Back";
 import { Content } from "../components/Content";
 import { Losers } from "../components/Losers";
 import { Menu } from "../components/Menu";
 import { Winner } from "../components/Winner";
 
+// Shared
 import { getGameFromRequest } from "../shared/getGameFromCookies";
 import { getWinnerNames } from "../shared/getWinnerNames";
 import { grammarJoin } from "../shared/grammarJoin";

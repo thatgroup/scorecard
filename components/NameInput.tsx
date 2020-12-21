@@ -1,5 +1,7 @@
+// Libraries
 import { css } from "@emotion/css";
 
+// Shared
 import { foreground, muted, pink } from "../shared/colours";
 import { MAX_PLAYER_NAME_LENGTH } from "../shared/constants";
 
@@ -10,6 +12,7 @@ interface Props {
   invalid?: boolean;
   onChange: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
 }
+
 export function NameInput({
   player,
   number,

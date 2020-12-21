@@ -1,5 +1,7 @@
+// Libraries
 import mockRedis from "redis-mock";
 
+// Shared
 import { createGame, getGame, updateGame } from "./db";
 import { getBlankScores } from "./getBlankScores";
 

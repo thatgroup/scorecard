@@ -1,12 +1,15 @@
+// Libraries
+import isEqual from "lodash/isEqual";
+import { parseCookies } from "nookies";
+
+// Next.JS
 import type { NextApiRequest, NextApiResponse } from "next";
 
+// Shared
 import { getGame, updateGame } from "../../shared/db";
 import { getBlankScores } from "../../shared/getBlankScores";
 import { log } from "../../shared/log";
 import { validatePlayers } from "../../shared/validatePlayers";
-
-import isEqual from "lodash/isEqual";
-import { parseCookies } from "nookies";
 
 export default async function (
   req: NextApiRequest,

@@ -1,14 +1,18 @@
+// Libraries
 import { css, cx } from "@emotion/css";
 
+// Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
+// Components
 import { Back } from "../components/Back";
 import { Content } from "../components/Content";
 import { DividedTable } from "../components/DividedTable";
 import { Menu } from "../components/Menu";
 
+// Shared
 import { muted, pink } from "../shared/colours";
 import { getGameFromRequest } from "../shared/getGameFromCookies";
 import { getLeaderBoard } from "../shared/getLeaderBoard";

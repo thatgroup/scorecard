@@ -1,7 +1,10 @@
-import { getBlankScores } from "../shared/getBlankScores";
-
+// Libraries
 import { render } from "@testing-library/react";
 
+// Shared
+import { getBlankScores } from "../shared/getBlankScores";
+
+// Components
 import { Winner } from "./Winner";
 
 describe("<Winner/>", () => {

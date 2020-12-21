@@ -1,5 +1,7 @@
+// Libraries
 import { render } from "@testing-library/react";
 
+// Components
 import { ScoreDisplay } from "./ScoreDisplay";
 
 describe("<ScoreDisplay/>", () => {

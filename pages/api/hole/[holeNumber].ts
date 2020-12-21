@@ -1,10 +1,13 @@
+// Libraries
+import { parseCookies } from "nookies";
+
+// Next.JS
 import type { NextApiRequest, NextApiResponse } from "next";
 
+// Shared
 import { getGame, updateGame } from "../../../shared/db";
 import { log } from "../../../shared/log";
 import { validateScoresForHole } from "../../../shared/validateScoresForHole";
-
-import { parseCookies } from "nookies";
 
 export default async function (
   req: NextApiRequest,

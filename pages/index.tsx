@@ -1,15 +1,19 @@
+// Libraries
 import { useEffect, useState } from "react";
 import { css, cx } from "@emotion/css";
 
+// Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import Head from "next/head";
 import Link from "next/link";
 
+// Components
 import { AnimatedLogo } from "../components/AnimatedLogo";
 import { Button } from "../components/Button";
 import { Footer } from "../components/Footer";
 import { Snowfall } from "../components/Snowfall";
 
+// Shared
 import {
   getGameFromRequest,
   setGameInResponse,

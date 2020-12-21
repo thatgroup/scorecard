@@ -1,6 +1,8 @@
+//Libraries
 import { useEffect, useState } from "react";
 import { css, cx } from "@emotion/css";
 
+// Shared
 import { blue, pink } from "../shared/colours";
 
 const WIDTH = 250;
