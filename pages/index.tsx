@@ -3,9 +3,9 @@ import { css, cx } from "@emotion/css";
 
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 
+import { AnimatedLogo } from "../components/AnimatedLogo";
 import { Button } from "../components/Button";
 import { Footer } from "../components/Footer";
 import { Snowfall } from "../components/Snowfall";
@@ -52,7 +52,7 @@ export default function Home({}: Props): JSX.Element {
   useEffect(() => {
     const timeout = window.setTimeout(() => {
       setButtonOpacity(1);
-    }, 1000);
+    }, 2500);
 
     return () => {
       window.clearTimeout(timeout);
@@ -69,13 +69,7 @@ export default function Home({}: Props): JSX.Element {
       <div className={cx(flexContainer)}>
         <div className={central}>
           <div className={imageContainer}>
-            <Image
-              priority
-              src="/logo.png"
-              alt="Glow Golf Logo"
-              width={250}
-              height={250}
-            />
+            <AnimatedLogo />
           </div>
         </div>
 
