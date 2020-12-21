@@ -106,7 +106,7 @@ export default function Scorecard({ game, previousUrl }: Props): JSX.Element {
   `;
 
   const container = css`
-    overflow-x: scroll;
+    overflow-x: auto;
   `;
 
   return (
