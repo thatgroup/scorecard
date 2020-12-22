@@ -1,11 +1,15 @@
+// Libraries
 import { useCallback, useEffect, useRef, useState } from "react";
 import { css } from "@emotion/css";
 import { css as css2, Global } from "@emotion/react";
+import type { ParsedUrlQuery } from "querystring";
 
+// Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 
+// Components
 import { Back } from "../../components/Back";
 import { Content } from "../../components/Content";
 import { DarkButton } from "../../components/DarkButton";
@@ -15,13 +19,12 @@ import { LinkButton } from "../../components/LinkButton";
 import { Menu } from "../../components/Menu";
 import { ScoreInput } from "../../components/ScoreInput";
 
+// Shared
 import { MAX_SCORE, NUMBER_OF_HOLES } from "../../shared/constants";
 import { getGameFromRequest } from "../../shared/getGameFromCookies";
 import { getHoleColour } from "../../shared/getHoleColour";
 import { getWinnerNames } from "../../shared/getWinnerNames";
 import { faded } from "../../shared/styles";
-
-import type { ParsedUrlQuery } from "querystring";
 
 interface Params extends ParsedUrlQuery {
   holeNumber: string;

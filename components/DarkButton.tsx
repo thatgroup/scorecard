@@ -1,3 +1,4 @@
+// Libraries
 import {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
@@ -6,6 +7,7 @@ import {
 } from "react";
 import { css, cx } from "@emotion/css";
 
+// Shared
 import { background, blue, foreground } from "../shared/colours";
 
 export type Props = DetailedHTMLProps<

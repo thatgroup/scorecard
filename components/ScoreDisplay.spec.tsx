@@ -1,5 +1,7 @@
+// Libraries
 import { render } from "@testing-library/react";
 
+// Components
 import { ScoreDisplay } from "./ScoreDisplay";
 
 describe("<ScoreDisplay/>", () => {
@@ -39,7 +41,7 @@ describe("<ScoreDisplay/>", () => {
   });
 
   it("handles null", () => {
-    const { getByText } = render(<ScoreDisplay score={null} />);
-    getByText("?");
+    const { container } = render(<ScoreDisplay score={null} />);
+    expect(container).toHaveTextContent("");
   });
 });

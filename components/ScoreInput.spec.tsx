@@ -1,8 +1,9 @@
+// Libraries
 import type { ReactElement, ReactNode } from "react";
-
 import { render as rtlRender, RenderOptions } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+// Components
 import { ScoreInput } from "./ScoreInput";
 
 const NOT_PLAYED = "?";

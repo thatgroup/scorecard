@@ -1,6 +1,8 @@
-import redis from "redis";
+// Libraries
 import { v4 } from "uuid";
+import redis from "redis";
 
+// Shared
 import { log } from "./log";
 
 const { REDIS_URL, REDIS_HOST, REDIS_PORT, REDIS_PASSWORD } = process.env || {};
@@ -61,7 +63,6 @@ async function has(id: string): Promise<boolean> {
 
 export async function getGame(id: string): Promise<Game | null> {
   const game = await get(id);
-  // console.log("Fetched Game", id, game);
   return game;
 }
 
@@ -83,7 +84,6 @@ export async function createGame(): Promise<string> {
 
 export async function updateGame(id: string, updatedGame: Game): Promise<void> {
   if (await has(id)) {
-    // console.log(JSON.stringify(updatedGame));
     await set(id, updatedGame);
   } else {
     log(`Game not found: ${id}`);

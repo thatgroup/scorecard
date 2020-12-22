@@ -1,7 +1,8 @@
+// Libraries
 import { useCallback, useEffect, useState } from "react";
-
 import { v4 } from "uuid";
 
+// Components
 import { Props as SnowflakeProps, Snowflake } from "./Snowflake";
 
 const defaultTtl = 10000;

@@ -1,5 +1,7 @@
+// Libraries
 import { sortBy } from "lodash";
 
+// Shared
 import { getScoresForCompleteHoles } from "./getScoresForCompleteHoles";
 import { getTotalForPlayer } from "./getTotalForPlayer";
 

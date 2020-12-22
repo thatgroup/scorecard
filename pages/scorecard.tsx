@@ -1,15 +1,19 @@
+// Libraries
 import { useMemo } from "react";
 import { css, cx } from "@emotion/css";
 
+// Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
+// Components
 import { Back } from "../components/Back";
 import { Content } from "../components/Content";
 import { Menu } from "../components/Menu";
 import { ScoreDisplay } from "../components/ScoreDisplay";
 
+// Shared
 import { background, muted } from "../shared/colours";
 import { HOLES } from "../shared/constants";
 import { getGameFromRequest } from "../shared/getGameFromCookies";
@@ -63,7 +67,6 @@ export default function Scorecard({ game, previousUrl }: Props): JSX.Element {
     width: 100%;
     table-layout: auto;
     text-align: left;
-    // font-weight: bold;
   `;
 
   const imageWrapper = css`
@@ -75,8 +78,6 @@ export default function Scorecard({ game, previousUrl }: Props): JSX.Element {
     padding-left: 2em;
     padding-right: 2em;
     tr > th {
-      // padding-top: 0.2em;
-      // padding-bottom: 0.2em;
       border-bottom: 1px solid ${muted};
     }
 
@@ -105,7 +106,7 @@ export default function Scorecard({ game, previousUrl }: Props): JSX.Element {
   `;
 
   const container = css`
-    overflow-x: scroll;
+    overflow-x: auto;
   `;
 
   return (

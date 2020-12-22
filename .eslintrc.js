@@ -30,7 +30,16 @@ module.exports = {
       "error",
       {
         groups: [
-          ["^react", "@emotion"],
+          [
+            "^react",
+            "@emotion",
+            "@testing-library",
+            "querystring",
+            "lodash",
+            "nookies",
+            "uuid",
+            "redis",
+          ],
           ["^next"],
           ["/components/"],
           ["/shared/"],
