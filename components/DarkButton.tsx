@@ -6,9 +6,7 @@ import {
   forwardRef,
 } from "react";
 import { css, cx } from "@emotion/css";
-
-// Shared
-import { background, blue, foreground } from "../shared/colours";
+import { useTheme } from "@emotion/react";
 
 export type Props = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -19,18 +17,20 @@ export const DarkButton = forwardRef(
   (props: Props, ref: ForwardedRef<HTMLButtonElement>) => {
     const { children, className, disabled, type = "button", ...rest } = props;
 
+    const theme = useTheme();
+
     const buttonClassName = css`
       display: inline-block;
       text-decoration: none;
-      color: ${background};
-      background: ${blue};
+      color: ${theme.colours.background};
+      background: ${theme.colours.blue};
       border-radius: 100rem;
       padding: 1rem;
       font-weight: 600;
       font-size: 1.2rem;
       font-family: proxima-nova;
       padding: 0.5rem 1.5rem;
-      border: solid 3px ${background};
+      border: solid 3px ${theme.colours.background};
 
       transition: box-shadow 200ms linear, color 200ms linear,
         opacity 200ms ease-out;
@@ -40,8 +40,8 @@ export const DarkButton = forwardRef(
       opacity: ${disabled ? 0.3 : 1};
 
       &:active {
-        color: ${foreground};
-        background: ${background};
+        color: ${theme.colours.foreground};
+        background: ${theme.colours.background};
 
         img {
           filter: none;

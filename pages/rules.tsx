@@ -1,5 +1,6 @@
 // Libraries
 import { css } from "@emotion/css";
+import { useTheme } from "@emotion/react";
 
 // Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
@@ -10,9 +11,6 @@ import { Back } from "../components/Back";
 import { Content } from "../components/Content";
 import { Divider } from "../components/Divider";
 import { Menu } from "../components/Menu";
-
-// Shared
-import { green, muted } from "../shared/colours";
 
 interface Props {
   previousUrl: string;
@@ -26,13 +24,14 @@ export async function getServerSideProps(
 }
 
 export default function RulesPage({ previousUrl }: Props): JSX.Element {
+  const theme = useTheme();
   const greenHeading = css`
-    color: ${green};
+    color: ${theme.colours.green};
   `;
 
   const ruleList = css`
     list-style: none;
-    color: ${muted};
+    color: ${theme.colours.muted};
     padding-left: 0px;
 
     li {

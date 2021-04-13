@@ -26,6 +26,7 @@ module.exports = {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
     "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
     "simple-import-sort/imports": [
       "error",
       {
@@ -39,6 +40,7 @@ module.exports = {
             "nookies",
             "uuid",
             "redis",
+            "test/test-utils$",
           ],
           ["^next"],
           ["/components/"],

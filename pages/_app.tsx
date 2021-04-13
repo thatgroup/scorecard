@@ -1,14 +1,16 @@
 // Libraries
-import { css, Global } from "@emotion/react";
+import { css, Global, ThemeProvider } from "@emotion/react";
 
 // Next.JS
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
-// Shared
-import { background } from "../shared/colours";
+// Theme
+import { getTheme } from "../shared/theme";
 
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
+  const theme = getTheme();
+
   return (
     <>
       <Global
@@ -18,9 +20,9 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
             padding: 0;
             margin: 0;
             font-family: proxima-nova, serif;
-            background: ${background};
+            background: ${theme.colours.background};
             transition: background linear 1s;
-            color: white;
+            color: ${theme.colours.foreground};
             position: relative;
             min-height: 100vh;
             background-position: bottom;
@@ -42,7 +44,9 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://use.typekit.net/cia7xbp.css" />
       </Head>
-      <Component {...pageProps} />
+      <ThemeProvider theme={getTheme()}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 }

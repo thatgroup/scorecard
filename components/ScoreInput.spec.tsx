@@ -1,7 +1,11 @@
 // Libraries
 import type { ReactElement, ReactNode } from "react";
-import { render as rtlRender, RenderOptions } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import {
+  AllTheProviders,
+  render as rtlRender,
+  RenderOptions,
+} from "../test/test-utils";
 
 // Components
 import { ScoreInput } from "./ScoreInput";
@@ -14,9 +18,11 @@ const ERROR = "Error";
 
 // It's a table row, so we need to wrap the testing render function
 const wrapper = (props: { children?: ReactNode }) => (
-  <table>
-    <tbody {...props} />
-  </table>
+  <AllTheProviders>
+    <table>
+      <tbody {...props} />
+    </table>
+  </AllTheProviders>
 );
 
 const render = (component: ReactElement, options?: RenderOptions) =>

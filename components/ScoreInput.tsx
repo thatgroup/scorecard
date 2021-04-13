@@ -1,9 +1,9 @@
 // Libraries
 import { memo, useCallback } from "react";
 import { css, cx } from "@emotion/css";
+import { useTheme } from "@emotion/react";
 
 // Shared
-import { yellow } from "../shared/colours";
 import { MAX_SCORE } from "../shared/constants";
 import { validateScore } from "../shared/validateScore";
 
@@ -28,6 +28,7 @@ function InnerScoreInput({
   onIncrease,
   onDecrease,
 }: Props): JSX.Element {
+  const theme = useTheme();
   const nameCell = css`
     font-size: 2em;
     font-weight: bold;
@@ -49,7 +50,7 @@ function InnerScoreInput({
   `;
 
   const currentLeader = css`
-    color: ${yellow};
+    color: ${theme.colours.yellow};
   `;
 
   const invalidScore = !validateScore(score);

@@ -1,6 +1,7 @@
 // Libraries
 import { useMemo } from "react";
 import { css, cx } from "@emotion/css";
+import { useTheme } from "@emotion/react";
 
 // Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
@@ -14,7 +15,6 @@ import { Menu } from "../components/Menu";
 import { ScoreDisplay } from "../components/ScoreDisplay";
 
 // Shared
-import { background, muted } from "../shared/colours";
 import { HOLES } from "../shared/constants";
 import { getGameFromRequest } from "../shared/getGameFromCookies";
 import { getNextPage } from "../shared/getNextPage";
@@ -49,13 +49,15 @@ export async function getServerSideProps(
 }
 
 export default function Scorecard({ game, previousUrl }: Props): JSX.Element {
+  const theme = useTheme();
+
   // To save a bunch of list operations, use a custom class to inspect the scores
   const { getScore } = useMemo(() => new ScoreMap(game), [game]);
 
   const mutedHeader = css`
     min-width: 3em;
     font-size: 1.5em;
-    color: ${muted};
+    color: ${theme.colours.muted};
   `;
 
   const playerRow = css`
@@ -78,12 +80,12 @@ export default function Scorecard({ game, previousUrl }: Props): JSX.Element {
     padding-left: 2em;
     padding-right: 2em;
     tr > th {
-      border-bottom: 1px solid ${muted};
+      border-bottom: 1px solid ${theme.colours.muted};
     }
 
     tr > td,
     tr > th {
-      border-right: 1px solid ${muted};
+      border-right: 1px solid ${theme.colours.muted};
     }
 
     tr > td:last-child,
@@ -96,7 +98,7 @@ export default function Scorecard({ game, previousUrl }: Props): JSX.Element {
     padding-right: 1em;
     left: 0;
     position: sticky;
-    background: ${background};
+    background: ${theme.colours.background};
     max-width: 5em;
   `;
 
@@ -144,7 +146,7 @@ export default function Scorecard({ game, previousUrl }: Props): JSX.Element {
                     css`
                       position: sticky;
                       left: 0;
-                      background: ${background};
+                      background: ${theme.colours.background};
                     `
                   )}
                 >

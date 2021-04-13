@@ -1,5 +1,6 @@
 // Libraries
 import { css, cx } from "@emotion/css";
+import { useTheme } from "@emotion/react";
 
 // Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
@@ -13,7 +14,6 @@ import { DividedTable } from "../components/DividedTable";
 import { Menu } from "../components/Menu";
 
 // Shared
-import { muted, pink } from "../shared/colours";
 import { getGameFromRequest } from "../shared/getGameFromCookies";
 import { getLeaderBoard } from "../shared/getLeaderBoard";
 import { getNextPage } from "../shared/getNextPage";
@@ -48,8 +48,9 @@ export async function getServerSideProps(
 }
 
 export default function Leaderboard({ game, previousUrl }: Props): JSX.Element {
+  const theme = useTheme();
   const rankCell = css`
-    color: ${pink};
+    color: ${theme.colours.pink};
     text-align: left;
     padding-right: 5px;
     width: 2em;
@@ -59,7 +60,7 @@ export default function Leaderboard({ game, previousUrl }: Props): JSX.Element {
 
   const totalCell = css`
     min-width: 1.5em;
-    color: ${muted};
+    color: ${theme.colours.muted};
     width: 2em;
   `;
 

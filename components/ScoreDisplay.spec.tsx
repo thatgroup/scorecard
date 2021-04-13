@@ -1,5 +1,5 @@
 // Libraries
-import { render } from "@testing-library/react";
+import { render } from "../test/test-utils";
 
 // Components
 import { ScoreDisplay } from "./ScoreDisplay";

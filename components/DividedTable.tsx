@@ -1,9 +1,7 @@
 // Libraries
 import type { ReactNode } from "react";
 import { css, cx } from "@emotion/css";
-
-// Shared
-import { muted } from "../shared/colours";
+import { useTheme } from "@emotion/react";
 
 interface Props {
   className?: string;
@@ -11,6 +9,8 @@ interface Props {
 }
 
 export function DividedTable({ className, children }: Props): JSX.Element {
+  const theme = useTheme();
+
   const dividedTable = css`
     table-layout: fixed;
     width: 100%;
@@ -18,7 +18,7 @@ export function DividedTable({ className, children }: Props): JSX.Element {
     tr > td {
       padding-top: 0.6rem;
       padding-bottom: 0.6rem;
-      border-bottom: 1px solid ${muted};
+      border-bottom: 1px solid ${theme.colours.muted};
     }
 
     tr:last-child > td {
