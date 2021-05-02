@@ -7,8 +7,8 @@ declare module "@emotion/react" {
       foreground: string;
 
       // Colours of the coloured buttons
-      buttonGreen: string;
-      buttonBlue: string;
+      buttonRight: string;
+      buttonLeft: string;
 
       // Colour of the -/+ buttons
       scoreButton: string;

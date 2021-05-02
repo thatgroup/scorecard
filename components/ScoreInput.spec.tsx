@@ -48,7 +48,7 @@ describe("<ScoreInput>", () => {
       getByText(NOT_PLAYED);
 
       expect(getByText(MINUS)).toBeDisabled();
-      userEvent.click(getByText(MINUS));
+      expect(() => userEvent.click(getByText(MINUS))).toThrow();
       expect(onDecrease).not.toHaveBeenCalled();
 
       userEvent.click(getByText(PLUS));
@@ -126,7 +126,7 @@ describe("<ScoreInput>", () => {
       expect(onDecrease).toHaveBeenCalled();
 
       expect(getByText(PLUS)).toBeDisabled();
-      userEvent.click(getByText(PLUS));
+      expect(() => userEvent.click(getByText(PLUS))).toThrow();
       expect(onIncrease).not.toHaveBeenCalled();
     });
   });

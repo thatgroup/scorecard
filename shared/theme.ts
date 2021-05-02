@@ -1,11 +1,11 @@
 import type { Theme } from "@emotion/react";
 
-const darkTheme = {
+const winterTheme = {
   colours: {
     background: "#171717",
     foreground: "#ffffff",
-    buttonGreen: "#2be879",
-    buttonBlue: "#34e2ff",
+    buttonRight: "#2be879",
+    buttonLeft: "#34e2ff",
     scoreButton: "#2be879",
     backIcon: "#2be879",
     muted: "#646464", // Aria-compliant
@@ -16,12 +16,12 @@ const darkTheme = {
   },
 };
 
-const lightTheme = {
+const summerTheme = {
   colours: {
-    background: "#ffffff",
-    foreground: "#171717",
-    buttonGreen: "#2be879",
-    buttonBlue: "#34e2ff",
+    background: "#171717",
+    foreground: "#ffffff",
+    buttonRight: "#ff76f9",
+    buttonLeft: "#e4a204",
     scoreButton: "#2be879",
     backIcon: "#2be879",
     muted: "#646464", // Aria-compliant
@@ -32,10 +32,14 @@ const lightTheme = {
   },
 };
 
-export function getTheme(): Theme {
+export function getThemeName(): "SUMMER" | "WINTER" {
   // You can't destructure process.env for 'reasons'
   // https://nextjs.org/docs/api-reference/next.config.js/environment-variables
-  return process.env.THEME?.trim().toLowerCase() === "light"
-    ? lightTheme
-    : darkTheme;
+  return process.env.THEME?.trim().toUpperCase() === "SUMMER"
+    ? "SUMMER"
+    : "WINTER";
+}
+
+export function getTheme(): Theme {
+  return getThemeName() === "SUMMER" ? summerTheme : winterTheme;
 }

@@ -44,8 +44,8 @@ export function Button({
       ),
       linear-gradient(
         45deg,
-        ${theme.colours.buttonBlue},
-        ${theme.colours.buttonGreen}
+        ${theme.colours.buttonLeft},
+        ${theme.colours.buttonRight}
       );
     background-origin: border-box;
     background-clip: content-box, border-box;

@@ -68,8 +68,8 @@ heroku redis:maxmemory --policy allkeys-lru --app glowgolfscorecard
 ```
 
 # Themes
-There are (going to be) two themes for the app - dark and light. The dark one is the neon one used for glow-golf and the light one is the one used for daytime golf. 
+There are (going to be) two themes for the app - summer and and winter. The neon one is used for glow-golf and the summer one is the one used for daytime golf. 
 
-To toggle between them, set the THEME case-insensitive environment variable to "LIGHT" for the light theme, and any thing else for the dark one (i.e. unset it, or set it to anything else).
+To toggle between them, set the THEME case-insensitive environment variable to "SUMMER" for the summer theme, and any thing else for the winter one (i.e. unset it, or set it to anything else).
 
 When deployed on Heroku, the deployment will need rebuilding each time as Next bakes in the env vars at build time and the live updating options will break some of the optimizations which appear to be more useful than live updating themes
