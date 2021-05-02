@@ -1,6 +1,6 @@
 // Libraries
 import { FormEvent, useState } from "react";
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
 // Next.JS
@@ -122,7 +122,7 @@ export default function Players({ game }: Props): JSX.Element {
         <Back href="/" />
       </Menu>
       <Content>
-        <h1 className={header}>Please enter the player names below...</h1>
+        <h1 css={header}>Please enter the player names below...</h1>
         <form onSubmit={handleSave}>
           <NameInput
             number={1}
@@ -179,7 +179,7 @@ export default function Players({ game }: Props): JSX.Element {
           <Divider />
           <Link href="/rules">
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <a className={rulesLink}>Rules &amp; Safety</a>
+            <a css={rulesLink}>Rules &amp; Safety</a>
           </Link>
           <Footer>
             {isValid ? (

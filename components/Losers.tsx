@@ -1,5 +1,5 @@
 // Libraries
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
 // Shared
@@ -23,7 +23,7 @@ export function Losers({ game }: Props): JSX.Element {
   return (
     <>
       {rankings.map((ranking) => (
-        <h2 key={ranking.player} className={mutedHeading}>
+        <h2 key={ranking.player} css={mutedHeading}>
           {rankToText(ranking.rank)} {ranking.player} - {ranking.total}
         </h2>
       ))}

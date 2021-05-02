@@ -1,6 +1,6 @@
 // Libraries
 import type { ReactNode } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
 interface Props {
@@ -25,5 +25,9 @@ export function DividedTable({ className, children }: Props): JSX.Element {
       border-bottom: none;
     }
   `;
-  return <table className={cx(className, dividedTable)}>{children}</table>;
+  return (
+    <table css={dividedTable} className={className}>
+      {children}
+    </table>
+  );
 }

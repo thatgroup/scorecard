@@ -1,6 +1,6 @@
 // Libraries
 import { useMemo } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
 // Next.JS
@@ -120,7 +120,7 @@ export default function Scorecard({ game, previousUrl }: Props): JSX.Element {
         <Back href={previousUrl} />
       </Menu>
       <Content>
-        <div className={imageWrapper}>
+        <div css={imageWrapper}>
           <Image
             layout="intrinsic"
             width={384}
@@ -130,30 +130,30 @@ export default function Scorecard({ game, previousUrl }: Props): JSX.Element {
           />
         </div>
       </Content>
-      <div className={container}>
+      <div css={container}>
         <div
-          className={css`
+          css={css`
             display: inline-block;
             margin: 2em;
           `}
         >
-          <table className={cx(leadboardTable, dividedTable)}>
+          <table css={[leadboardTable, dividedTable]}>
             <thead>
               <tr>
                 <th
-                  className={cx(
+                  css={[
                     mutedHeader,
                     css`
                       position: sticky;
                       left: 0;
                       background: ${theme.colours.background};
-                    `
-                  )}
+                    `,
+                  ]}
                 >
                   Player
                 </th>
                 {HOLES.map((hole) => (
-                  <th key={hole} className={cx(mutedHeader, scoreCell)}>
+                  <th key={hole} css={[mutedHeader, scoreCell]}>
                     {hole}
                   </th>
                 ))}
@@ -161,10 +161,10 @@ export default function Scorecard({ game, previousUrl }: Props): JSX.Element {
             </thead>
             <tbody>
               {game.players.map((player) => (
-                <tr key={player} className={playerRow}>
-                  <td className={cx(nameCell, constrained)}>{player}</td>
+                <tr key={player} css={playerRow}>
+                  <td css={[nameCell, constrained]}>{player}</td>
                   {HOLES.map((hole) => (
-                    <td key={player + hole} className={scoreCell}>
+                    <td key={player + hole} css={scoreCell}>
                       <ScoreDisplay score={getScore(player, hole)} />
                     </td>
                   ))}

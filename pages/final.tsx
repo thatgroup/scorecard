@@ -1,5 +1,5 @@
 // Libraries
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 
 // Next.JS
 import Head from "next/head";
@@ -27,7 +27,7 @@ export default function Final(): JSX.Element {
       <Menu>
         <Back href="/hole/17" />
       </Menu>
-      <div className={imageContainer}>
+      <div css={imageContainer}>
         <Image
           src={
             themeName === "SUMMER"

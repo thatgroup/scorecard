@@ -1,6 +1,6 @@
 //Libraries
 import { useEffect, useState } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
 
 const WIDTH = 250;
 const HEIGHT = 250;
@@ -41,9 +41,9 @@ export function SummerAnimatedLogo(): JSX.Element {
   `;
 
   return (
-    <div className={container}>
+    <div css={container}>
       <img
-        className={cx(image, { [visible]: isVisible })}
+        css={[image, isVisible ? visible : null]}
         src="/summer-logo.png"
         alt=""
         width={WIDTH}

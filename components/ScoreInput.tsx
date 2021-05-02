@@ -1,6 +1,6 @@
 // Libraries
 import { memo, useCallback } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
 // Shared
@@ -71,18 +71,16 @@ function InnerScoreInput({
 
   return (
     <tr>
-      <td className={cx(nameCell, { [currentLeader]: leading })}>
-        {playerName}
-      </td>
-      <td className={buttonCell}>
+      <td css={[nameCell, leading ? currentLeader : null]}>{playerName}</td>
+      <td css={buttonCell}>
         <ScoreButton onClick={handleDecrease} disabled={minusButtonDisabled}>
           &ndash;
         </ScoreButton>
       </td>
-      <td className={scoreCell}>
+      <td css={scoreCell}>
         <ScoreDisplay score={score} notPlayed="?" />
       </td>
-      <td className={buttonCell}>
+      <td css={buttonCell}>
         <ScoreButton onClick={handleIncrease} disabled={plusButtonDisabled}>
           +
         </ScoreButton>

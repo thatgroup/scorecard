@@ -1,6 +1,6 @@
 // Libraries
 import { useEffect, useState } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
 
 // Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
@@ -75,9 +75,9 @@ export default function Home({}: Props): JSX.Element {
       </Head>
 
       {themeName === "SUMMER" ? <SummerBackground animated /> : <Snowfall />}
-      <div className={cx(flexContainer)}>
-        <div className={central}>
-          <div className={imageContainer}>
+      <div css={flexContainer}>
+        <div css={central}>
+          <div css={imageContainer}>
             {themeName === "SUMMER" ? (
               <SummerAnimatedLogo />
             ) : (

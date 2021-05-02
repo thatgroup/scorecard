@@ -1,6 +1,6 @@
 //Libraries
 import { useEffect, useState } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
 
 const LEFT_CLOUD_WIDTH = 522;
 const LEFT_CLOUD_HEIGHT = 293;
@@ -64,16 +64,14 @@ export function SummerBackground({ animated = false }: Props): JSX.Element {
   return (
     <>
       <img
-        className={cx(cloud, leftCloud, { [hiddenLeftCloud]: leftCloudHidden })}
+        css={[cloud, leftCloud, leftCloudHidden ? hiddenLeftCloud : null]}
         src="/left-cloud.png"
         alt=""
         width={LEFT_CLOUD_WIDTH}
         height={LEFT_CLOUD_HEIGHT}
       />
       <img
-        className={cx(cloud, rightCloud, {
-          [hiddenRightCloud]: rightCloudHidden,
-        })}
+        css={[cloud, rightCloud, rightCloudHidden ? hiddenRightCloud : null]}
         src="/right-cloud.png"
         alt=""
         width={RIGHT_CLOUD_WIDTH}

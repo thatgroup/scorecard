@@ -1,6 +1,6 @@
 // Libraries
 import { ButtonHTMLAttributes, DetailedHTMLProps, memo } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
 // Shared
@@ -54,7 +54,11 @@ function InternalScoreButton({
   `;
 
   return (
-    <button className={cx(buttonClassName, noLongPress, className)} {...rest}>
+    <button
+      css={[buttonClassName, noLongPress]}
+      className={className}
+      {...rest}
+    >
       {children}
     </button>
   );

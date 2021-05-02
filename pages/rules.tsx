@@ -1,5 +1,5 @@
 // Libraries
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
 // Next.JS
@@ -48,9 +48,9 @@ export default function RulesPage({ previousUrl }: Props): JSX.Element {
         <Back href={previousUrl} />
       </Menu>
       <Content>
-        <h1 className={greenHeading}>Rules</h1>
+        <h1 css={greenHeading}>Rules</h1>
         <Divider />
-        <ul className={ruleList}>
+        <ul css={ruleList}>
           <li>
             It’s simple! The player with the lowest number of shots after 18
             holes wins.
@@ -62,9 +62,9 @@ export default function RulesPage({ previousUrl }: Props): JSX.Element {
 
           <li>All kids must be supervised by an adult.</li>
         </ul>
-        <h1 className={greenHeading}>Safety</h1>
+        <h1 css={greenHeading}>Safety</h1>
         <Divider />
-        <ul className={ruleList}>
+        <ul css={ruleList}>
           <li>Please stick to the path.</li>
           <li>
             Do NOT retrieve lost balls from water areas. Go back to reception

@@ -1,5 +1,5 @@
 // Libraries
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
 export function Divider(): JSX.Element {
@@ -10,5 +10,5 @@ export function Divider(): JSX.Element {
     margin: 0.5em 0;
   `;
 
-  return <div className={hr} />;
+  return <div css={hr} />;
 }

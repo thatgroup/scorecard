@@ -1,5 +1,5 @@
 // Libraries
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
 // Next.JS
@@ -84,8 +84,8 @@ export default function Leaderboard({ game, previousUrl }: Props): JSX.Element {
       <Menu>
         <Back href={previousUrl} />
       </Menu>
-      <Content className={center}>
-        <div className={imageWrapper}>
+      <Content css={center}>
+        <div css={imageWrapper}>
           <Image
             layout="intrinsic"
             width={384}
@@ -95,13 +95,13 @@ export default function Leaderboard({ game, previousUrl }: Props): JSX.Element {
           />
         </div>
 
-        <DividedTable className={leadboardTable}>
+        <DividedTable css={leadboardTable}>
           <tbody>
             {getLeaderBoard(game).map((ranking) => (
               <tr key={ranking.player}>
-                <td className={rankCell}>{rankToText(ranking.rank)}</td>
-                <td className={cx(nameCell, constrained)}>{ranking.player}</td>
-                <td className={totalCell}>{ranking.total}</td>
+                <td css={rankCell}>{rankToText(ranking.rank)}</td>
+                <td css={[nameCell, constrained]}>{ranking.player}</td>
+                <td css={totalCell}>{ranking.total}</td>
               </tr>
             ))}
           </tbody>

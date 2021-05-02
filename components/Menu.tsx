@@ -1,4 +1,4 @@
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 
 export interface Props {
   children: React.ReactNode;
@@ -11,5 +11,5 @@ export function Menu({ children }: Props): JSX.Element {
     display: flex;
     justify-content: space-between;
   `;
-  return <header className={content}>{children}</header>;
+  return <header css={content}>{children}</header>;
 }

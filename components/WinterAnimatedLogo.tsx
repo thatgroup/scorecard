@@ -1,6 +1,6 @@
 //Libraries
 import { useEffect, useState } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
 
 // Shared
 import { getTheme } from "../shared/theme";
@@ -108,67 +108,67 @@ export function WinterAnimatedLogo(): JSX.Element {
     height: HEIGHT,
   };
   return (
-    <div className={container}>
+    <div css={container}>
       <img
-        className={outer ? hidden : visible}
+        css={outer ? hidden : visible}
         src="/winter-logo-outer-off.png"
         alt=""
         {...common}
       />
       <img
-        className={outer ? cx(visible, flickering, blueGlow) : hidden}
+        css={outer ? [visible, flickering, blueGlow] : hidden}
         src="/winter-logo-outer-on.png"
         alt=""
         {...common}
       />
 
       <img
-        className={tophalf ? hidden : visible}
+        css={tophalf ? hidden : visible}
         src="/winter-logo-tophalf-off.png"
         alt=""
         {...common}
       />
       <img
-        className={tophalf ? cx(visible, flickering, blueGlow) : hidden}
+        css={tophalf ? [visible, flickering, blueGlow] : hidden}
         src="/winter-logo-tophalf-on.png"
         alt=""
         {...common}
       />
 
       <img
-        className={victoriafalls ? hidden : visible}
+        css={victoriafalls ? hidden : visible}
         src="/winter-logo-victoriafalls-off.png"
         alt=""
         {...common}
       />
       <img
-        className={victoriafalls ? cx(visible, flickering, whiteGlow) : hidden}
+        css={victoriafalls ? [visible, flickering, whiteGlow] : hidden}
         src="/winter-logo-victoriafalls-on.png"
         alt=""
         {...common}
       />
 
       <img
-        className={glowgolf ? hidden : visible}
+        css={glowgolf ? hidden : visible}
         src="/winter-logo-glowgolf-off.png"
         alt=""
         {...common}
       />
       <img
-        className={glowgolf ? cx(visible, flickering, pinkGlow) : hidden}
+        css={glowgolf ? [visible, flickering, pinkGlow] : hidden}
         src="/winter-logo-glowgolf-on.png"
         alt=""
         {...common}
       />
 
       <img
-        className={bath ? hidden : visible}
+        css={bath ? hidden : visible}
         src="/winter-logo-bath-off.png"
         alt=""
         {...common}
       />
       <img
-        className={bath ? cx(visible, flickering, whiteGlow) : hidden}
+        css={bath ? [visible, flickering, whiteGlow] : hidden}
         src="/winter-logo-bath-on.png"
         alt=""
         {...common}

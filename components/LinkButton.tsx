@@ -1,6 +1,6 @@
 // Libraries
 import type { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
 export type Props = DetailedHTMLProps<
@@ -23,7 +23,7 @@ export function LinkButton({
     padding: 1em 1.5em;
   `;
   return (
-    <button {...rest} className={cx(link, className)}>
+    <button {...rest} css={link} className={className}>
       {children}
     </button>
   );

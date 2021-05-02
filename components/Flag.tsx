@@ -1,6 +1,6 @@
 // Libraries
 import type { ReactNode } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
 export interface Props {
@@ -46,9 +46,9 @@ export function Flag({ colour, className, children }: Props): JSX.Element {
   `;
 
   return (
-    <div className={cx(flagWrapper, className)}>
-      <div className={flag} />
-      <h1 className={flagText}>{children}</h1>
+    <div css={flagWrapper} className={className}>
+      <div css={flag} />
+      <h1 css={flagText}>{children}</h1>
     </div>
   );
 }

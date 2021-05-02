@@ -1,5 +1,5 @@
 // Libraries
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
 // Shared
@@ -50,7 +50,7 @@ export function NameInput({
       placeholder={`Player ${number}`}
       value={player}
       disabled={disabled}
-      className={textInput}
+      css={textInput}
       maxLength={MAX_PLAYER_NAME_LENGTH}
       onChange={onChange}
     />

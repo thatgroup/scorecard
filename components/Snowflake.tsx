@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 
 export interface Props {
   id: string;
@@ -40,7 +40,7 @@ export function InternalSnowflake({ x, ttl }: Props): JSX.Element {
   return (
     <div
       style={{ left: `${x}%`, animation: `fall ${ttl}ms linear` }}
-      className={snowflake}
+      css={snowflake}
     ></div>
   );
 }

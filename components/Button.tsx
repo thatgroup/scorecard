@@ -1,5 +1,5 @@
 // Libraries
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
 // Next.JS
@@ -76,7 +76,7 @@ export function Button({
       {arrow ? (
         <img
           src="/arrow.png"
-          className={image}
+          css={image}
           width={78 / 4}
           height={48 / 4}
           alt=""
@@ -90,7 +90,7 @@ export function Button({
     return (
       <Link href={href}>
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a style={style} className={cx(buttonClassName, className)}>
+        <a style={style} className={className} css={buttonClassName}>
           {contents}
         </a>
       </Link>
@@ -101,7 +101,8 @@ export function Button({
         style={style}
         type={type}
         disabled={disabled}
-        className={cx(buttonClassName, className)}
+        className={className}
+        css={buttonClassName}
       >
         {contents}
       </button>

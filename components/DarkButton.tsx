@@ -5,7 +5,7 @@ import {
   ForwardedRef,
   forwardRef,
 } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
 export type Props = DetailedHTMLProps<
@@ -61,12 +61,13 @@ export const DarkButton = forwardRef(
         ref={ref}
         type={type}
         disabled={disabled}
-        className={cx(buttonClassName, className)}
+        css={buttonClassName}
+        className={className}
       >
         {children}
         <img
           src="/arrow.png"
-          className={image}
+          css={image}
           width={78 / 4}
           height={48 / 4}
           alt=""
