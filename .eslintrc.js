@@ -20,7 +20,7 @@ module.exports = {
     "plugin:jest-dom/recommended",
     "plugin:jsx-a11y/recommended",
   ],
-  plugins: ["simple-import-sort"],
+  plugins: ["simple-import-sort", "@next/eslint-plugin-next"],
   rules: {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
