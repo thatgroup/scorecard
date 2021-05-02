@@ -7,10 +7,10 @@ const HEIGHT = 250;
 const STEP_MS = 300;
 
 export function SummerAnimatedLogo(): JSX.Element {
-  const [visible, setVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
     const outerTimeout = window.setTimeout(() => {
-      setVisible(true);
+      setIsVisible(true);
     }, 4.5 * STEP_MS);
 
     return () => {
@@ -29,19 +29,21 @@ export function SummerAnimatedLogo(): JSX.Element {
     top: 0px;
     left: 0px;
 
-    opacity: 1;
+    transform: scale(0.8);
+    opacity: 0;
+
     transition: transform ${STEP_MS}ms, opacity ${STEP_MS}ms;
   `;
 
-  const hidden = css`
-    transform: scale(0.8);
-    opacity: 0;
+  const visible = css`
+    transform: scale(1);
+    opacity: 1;
   `;
 
   return (
     <div className={container}>
       <img
-        className={cx(image, { [hidden]: !visible })}
+        className={cx(image, { [visible]: isVisible })}
         src="/summer-logo.png"
         alt=""
         width={WIDTH}
