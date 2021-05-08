@@ -1,5 +1,7 @@
-import { render } from "@testing-library/react";
+// Libraries
+import { render } from "../test/test-utils";
 
+// Components
 import { Menu } from "./Menu";
 
 describe("<Menu/>", () => {

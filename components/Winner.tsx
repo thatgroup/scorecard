@@ -1,5 +1,7 @@
-import { css } from "@emotion/css";
+// Libraries
+import { css } from "@emotion/react";
 
+// Shared
 import { getLeaderBoard } from "../shared/getLeaderBoard";
 import { grammarJoin } from "../shared/grammarJoin";
 
@@ -23,7 +25,7 @@ export function Winner({ game }: Props): JSX.Element | null {
     return null;
   } else {
     return (
-      <h1 className={largeHeader}>
+      <h1 css={largeHeader}>
         {grammarJoin(names)} - {winningRankings[0].total}
       </h1>
     );

@@ -1,5 +1,7 @@
-import { css, cx } from "@emotion/css";
+// Libraries
+import { css } from "@emotion/react";
 
+// Next.JS
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -17,7 +19,7 @@ export function PageLink({ href, children }: Props): JSX.Element {
   return (
     <Link href={href}>
       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a className={cx({ [active]: router.asPath === href })}>{children}</a>
+      <a css={[router.asPath === href ? active : null]}>{children}</a>
     </Link>
   );
 }

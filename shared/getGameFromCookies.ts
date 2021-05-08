@@ -1,15 +1,19 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-
-import type { IncomingMessage, ServerResponse } from "http";
+// Libraries
 import { parseCookies, setCookie } from "nookies";
 
+// Next.JS
+import type { NextApiRequest, NextApiResponse } from "next";
+
+// Libraries
+import type { IncomingMessage, ServerResponse } from "http";
+
+// Shared
 import { createGame, getGame } from "./db";
 
 export async function getGameFromRequest(
   req: NextApiRequest | IncomingMessage
 ): Promise<Game | null> {
   const { gameId } = parseCookies({ req });
-  // console.log("Request has game id", gameId);
   if (gameId) {
     return getGame(gameId);
   } else {

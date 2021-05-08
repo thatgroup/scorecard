@@ -1,15 +1,19 @@
-import { css } from "@emotion/css";
+// Libraries
+import { css } from "@emotion/react";
 
+// Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
+// Components
 import { Back } from "../components/Back";
 import { Content } from "../components/Content";
 import { Losers } from "../components/Losers";
 import { Menu } from "../components/Menu";
 import { Winner } from "../components/Winner";
 
+// Shared
 import { getGameFromRequest } from "../shared/getGameFromCookies";
 import { getWinnerNames } from "../shared/getWinnerNames";
 import { grammarJoin } from "../shared/grammarJoin";
@@ -59,7 +63,7 @@ export default function Results({ game, previousUrl }: Props): JSX.Element {
       <Menu>
         <Back href={previousUrl} />
       </Menu>
-      <Content className={centerAligned}>
+      <Content css={centerAligned}>
         <Image width={300} height={300} src="/winner.png" alt="Winner" />
         <Winner game={game} />
         <Losers game={game} />

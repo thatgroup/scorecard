@@ -1,7 +1,9 @@
+// Libraries
 import { ButtonHTMLAttributes, DetailedHTMLProps, memo } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 
-import { background, green, muted } from "../shared/colours";
+// Shared
 import { noLongPress } from "../shared/styles";
 
 export type Props = DetailedHTMLProps<
@@ -14,6 +16,7 @@ function InternalScoreButton({
   children,
   ...rest
 }: Props): JSX.Element {
+  const theme = useTheme();
   const buttonClassName = css`
     display: inline-block;
     padding: 0;
@@ -22,14 +25,14 @@ function InternalScoreButton({
     box-sizing: border-box;
     text-decoration: none;
     background: transparent;
-    border: 2px solid ${green};
+    border: 2px solid ${theme.colours.green};
     border-radius: 100px;
 
     font-weight: 400;
     font-size: 2em;
     font-family: proxima-nova, sans-serif;
     line-height: 0em;
-    color: ${green};
+    color: ${theme.colours.green};
     text-align: center;
 
     transition: color 200ms, border-color 200ms, background-color 200ms;
@@ -37,21 +40,25 @@ function InternalScoreButton({
     outline: none;
 
     &:active {
-      background-color: ${green};
-      color: ${background};
+      background-color: ${theme.colours.green};
+      color: ${theme.colours.background};
     }
     &:disabled {
       pointer-events: none;
-      color: ${muted};
-      border-color: ${muted};
+      color: ${theme.colours.muted};
+      border-color: ${theme.colours.muted};
       &:active {
-        background-color: ${muted};
+        background-color: ${theme.colours.muted};
       }
     }
   `;
 
   return (
-    <button className={cx(buttonClassName, noLongPress, className)} {...rest}>
+    <button
+      css={[buttonClassName, noLongPress]}
+      className={className}
+      {...rest}
+    >
       {children}
     </button>
   );

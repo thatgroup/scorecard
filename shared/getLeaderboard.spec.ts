@@ -275,22 +275,22 @@ describe("getLeaderboard", () => {
 
     const expected: Ranking[] = [
       {
-        player: "barry",
+        player: "adam",
         rank: 1,
-        joint: false,
-        total: 2,
-        trailing: 0,
+        joint: true,
+        total: null,
+        trailing: null,
       },
       {
-        player: "adam",
-        rank: 2,
+        player: "barry",
+        rank: 1,
         joint: true,
         total: null,
         trailing: null,
       },
       {
         player: "clara",
-        rank: 2,
+        rank: 1,
         joint: true,
         total: null,
         trailing: null,

@@ -1,14 +1,16 @@
-import { css } from "@emotion/css";
+// Libraries
+import { css } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 
+// Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import Head from "next/head";
 
+// Components
 import { Back } from "../components/Back";
 import { Content } from "../components/Content";
 import { Divider } from "../components/Divider";
 import { Menu } from "../components/Menu";
-
-import { green, muted } from "../shared/colours";
 
 interface Props {
   previousUrl: string;
@@ -22,13 +24,14 @@ export async function getServerSideProps(
 }
 
 export default function RulesPage({ previousUrl }: Props): JSX.Element {
+  const theme = useTheme();
   const greenHeading = css`
-    color: ${green};
+    color: ${theme.colours.green};
   `;
 
   const ruleList = css`
     list-style: none;
-    color: ${muted};
+    color: ${theme.colours.muted};
     padding-left: 0px;
 
     li {
@@ -45,9 +48,9 @@ export default function RulesPage({ previousUrl }: Props): JSX.Element {
         <Back href={previousUrl} />
       </Menu>
       <Content>
-        <h1 className={greenHeading}>Rules</h1>
+        <h1 css={greenHeading}>Rules</h1>
         <Divider />
-        <ul className={ruleList}>
+        <ul css={ruleList}>
           <li>
             It’s simple! The player with the lowest number of shots after 18
             holes wins.
@@ -59,9 +62,9 @@ export default function RulesPage({ previousUrl }: Props): JSX.Element {
 
           <li>All kids must be supervised by an adult.</li>
         </ul>
-        <h1 className={greenHeading}>Safety</h1>
+        <h1 css={greenHeading}>Safety</h1>
         <Divider />
-        <ul className={ruleList}>
+        <ul css={ruleList}>
           <li>Please stick to the path.</li>
           <li>
             Do NOT retrieve lost balls from water areas. Go back to reception

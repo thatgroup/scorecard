@@ -1,6 +1,9 @@
+// Libraries
 import { getNextUnplayedHole } from "../shared/getNextUnplayedHole";
 
+// Components
 import { PageLink } from "./PageLink";
+
 export interface Props {
   game: Game;
 }

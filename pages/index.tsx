@@ -1,19 +1,26 @@
+// Libraries
 import { useEffect, useState } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
 
+// Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 
+// Components
 import { Button } from "../components/Button";
 import { Footer } from "../components/Footer";
 import { Snowfall } from "../components/Snowfall";
+import { SummerAnimatedLogo } from "../components/SummerAnimatedLogo";
+import { SummerBackground } from "../components/SummerBackground";
+import { WinterAnimatedLogo } from "../components/WinterAnimatedLogo";
 
+// Shared
 import {
   getGameFromRequest,
   setGameInResponse,
 } from "../shared/getGameFromCookies";
+import { getThemeName } from "../shared/theme";
 
 interface Props {
   game: Game;
@@ -31,6 +38,7 @@ export async function getServerSideProps(
 }
 
 export default function Home({}: Props): JSX.Element {
+  const themeName = getThemeName();
   const imageContainer = css`
     width: 100%;
     padding: 1em;
@@ -41,7 +49,7 @@ export default function Home({}: Props): JSX.Element {
   `;
 
   const flexContainer = css`
-    height: 80vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,15 +57,16 @@ export default function Home({}: Props): JSX.Element {
   `;
 
   const [buttonOpacity, setButtonOpacity] = useState(0);
+  const buttonDelay = themeName === "SUMMER" ? 1800 : 2500; // Winter has more stuff to complete before revealing the button
   useEffect(() => {
     const timeout = window.setTimeout(() => {
       setButtonOpacity(1);
-    }, 1000);
+    }, buttonDelay);
 
     return () => {
       window.clearTimeout(timeout);
     };
-  }, []);
+  }, [buttonDelay]);
 
   return (
     <>
@@ -65,17 +74,15 @@ export default function Home({}: Props): JSX.Element {
         <title>Welcome to Glow Golf</title>
       </Head>
 
-      <Snowfall />
-      <div className={cx(flexContainer)}>
-        <div className={central}>
-          <div className={imageContainer}>
-            <Image
-              priority
-              src="/logo.png"
-              alt="Glow Golf Logo"
-              width={250}
-              height={250}
-            />
+      {themeName === "SUMMER" ? <SummerBackground animated /> : <Snowfall />}
+      <div css={flexContainer}>
+        <div css={central}>
+          <div css={imageContainer}>
+            {themeName === "SUMMER" ? (
+              <SummerAnimatedLogo />
+            ) : (
+              <WinterAnimatedLogo />
+            )}
           </div>
         </div>
 

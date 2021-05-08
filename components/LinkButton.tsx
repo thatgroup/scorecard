@@ -1,7 +1,7 @@
+// Libraries
 import type { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
-import { css, cx } from "@emotion/css";
-
-import { foreground } from "../shared/colours";
+import { css } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 
 export type Props = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -13,16 +13,17 @@ export function LinkButton({
   className,
   ...rest
 }: Props): JSX.Element {
+  const theme = useTheme();
   const link = css`
     background: transparent;
-    color: ${foreground};
+    color: ${theme.colours.foreground};
     border: none;
     text-decoration: underline;
     font-size: 1em;
     padding: 1em 1.5em;
   `;
   return (
-    <button {...rest} className={cx(link, className)}>
+    <button {...rest} css={link} className={className}>
       {children}
     </button>
   );

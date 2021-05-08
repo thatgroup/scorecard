@@ -1,9 +1,13 @@
+// Libraries
+import { parseCookies } from "nookies";
+
+// Next.JS
 import type { NextApiRequest, NextApiResponse } from "next";
 
+// Shared
 import { getGame, updateGame } from "../../../shared/db";
+import { log } from "../../../shared/log";
 import { validateScoresForHole } from "../../../shared/validateScoresForHole";
-
-import { parseCookies } from "nookies";
 
 export default async function (
   req: NextApiRequest,
@@ -23,12 +27,20 @@ export default async function (
   }
 }
 
+// Use this to tie log requests together
+let requestNumber = 0;
 async function handlePost(req: NextApiRequest, res: NextApiResponse) {
   const { holeNumber } = req.query;
+
+  requestNumber++;
+  const { query, body } = req;
+  const debugData = JSON.stringify({ requestNumber, query, body });
 
   if (typeof holeNumber !== "string") {
     res.statusCode = 400;
     res.send("Hole Id is not valid");
+    log(`Hole Id is not valid: ${holeNumber}`);
+    log(debugData);
     return;
   }
 
@@ -36,6 +48,8 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
   if (isNaN(hole)) {
     res.statusCode = 400;
     res.send("Hole Id is not valid");
+    log(`Hole Id is not valid: ${holeNumber}`);
+    log(debugData);
     return;
   }
 
@@ -44,6 +58,8 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
   if (!gameId) {
     res.statusCode = 400;
     res.send("Game ID not set");
+    log(`Game ID not set`);
+    log(debugData);
     return;
   }
 
@@ -51,6 +67,8 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
   if (!game) {
     res.statusCode = 400;
     res.send("Game not found");
+    log(`Game not found: ${gameId}`);
+    log(debugData);
     return;
   }
 
@@ -58,6 +76,8 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
   if (!req.body || typeof req.body !== "string") {
     res.statusCode = 400;
     res.send(`Invalid request body: ${JSON.stringify(req.body)}`);
+    log(`Invalid request body: ${JSON.stringify(req.body)}`);
+    log(debugData);
     return;
   }
 
@@ -65,11 +85,15 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
   if (validateScoresForHole(postedScores, hole, game.players) === false) {
     res.statusCode = 400;
     res.send("Scores are not valid");
+    log(`Scores are not valid for game ${gameId}: ${req.body}`);
+    log(debugData);
     return;
   }
 
   // Remove any previous scores for this hole
   const existingScores = game.scores.filter((score) => score.hole !== hole);
+
+  log(`Saving scores for hole ${holeNumber} and game ${gameId}`);
 
   try {
     await updateGame(gameId, {
@@ -81,5 +105,7 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
   } catch (error) {
     res.statusCode = 500;
     res.send("Failed to update game");
+    log(`Failed to update game ${gameId}: ${error.message}`);
+    log(debugData);
   }
 }
