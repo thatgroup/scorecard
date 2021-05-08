@@ -1,8 +1,8 @@
 // Libraries
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 
 // Shared
-import { muted } from "../shared/colours";
 import { getLeaderBoard } from "../shared/getLeaderBoard";
 import { rankToText } from "../shared/rankToText";
 
@@ -11,9 +11,11 @@ interface Props {
 }
 
 export function Losers({ game }: Props): JSX.Element {
+  const theme = useTheme();
+
   const rankings = getLeaderBoard(game).filter((ranking) => ranking.rank !== 1);
   const mutedHeading = css`
-    color: ${muted};
+    color: ${theme.colours.muted};
     font-size: 2em;
     margin: 0.5em;
   `;
@@ -21,7 +23,7 @@ export function Losers({ game }: Props): JSX.Element {
   return (
     <>
       {rankings.map((ranking) => (
-        <h2 key={ranking.player} className={mutedHeading}>
+        <h2 key={ranking.player} css={mutedHeading}>
           {rankToText(ranking.rank)} {ranking.player} - {ranking.total}
         </h2>
       ))}

@@ -1,16 +1,9 @@
 // Libraries
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 
 // Next.JS
 import Link from "next/link";
-
-// Shared
-import {
-  background,
-  buttonBlue,
-  buttonGreen,
-  foreground,
-} from "../shared/colours";
 
 export interface Props {
   className?: string;
@@ -32,10 +25,12 @@ export function Button({
   type = "button",
   disabled = false,
 }: Props): JSX.Element {
+  const theme = useTheme();
+
   const buttonClassName = css`
     display: inline-block;
     text-decoration: none;
-    color: ${foreground};
+    color: ${theme.colours.foreground};
     border-radius: 100rem;
     padding: 1rem;
     font-weight: 600;
@@ -47,10 +42,14 @@ export function Button({
         rgba(255, 255, 255, 0),
         rgba(255, 255, 255, 0)
       ),
-      linear-gradient(45deg, ${buttonBlue}, ${buttonGreen});
+      linear-gradient(
+        45deg,
+        ${theme.colours.buttonLeft},
+        ${theme.colours.buttonRight}
+      );
     background-origin: border-box;
     background-clip: content-box, border-box;
-    box-shadow: 2px 1000px 1px ${background} inset;
+    box-shadow: 2px 1000px 1px ${theme.colours.background} inset;
 
     transition: box-shadow 200ms linear, color 200ms linear, opacity 1s ease-out;
 
@@ -58,7 +57,7 @@ export function Button({
 
     &:hover {
       box-shadow: none;
-      color: ${background};
+      color: ${theme.colours.background};
 
       img {
         filter: invert(1);
@@ -77,7 +76,7 @@ export function Button({
       {arrow ? (
         <img
           src="/arrow.png"
-          className={image}
+          css={image}
           width={78 / 4}
           height={48 / 4}
           alt=""
@@ -91,7 +90,7 @@ export function Button({
     return (
       <Link href={href}>
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a style={style} className={cx(buttonClassName, className)}>
+        <a style={style} className={className} css={buttonClassName}>
           {contents}
         </a>
       </Link>
@@ -102,7 +101,8 @@ export function Button({
         style={style}
         type={type}
         disabled={disabled}
-        className={cx(buttonClassName, className)}
+        className={className}
+        css={buttonClassName}
       >
         {contents}
       </button>

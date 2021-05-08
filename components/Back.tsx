@@ -1,5 +1,5 @@
 // Libraries
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 
 // Next.JS
 import Link from "next/link";
@@ -18,7 +18,7 @@ export function Back({ href }: BackProps): JSX.Element {
   return (
     <Link href={href}>
       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a className={link}>
+      <a css={link}>
         <img src="/chevron.png" aria-hidden width={7} height={10} alt="" /> Back
       </a>
     </Link>

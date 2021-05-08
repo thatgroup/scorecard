@@ -1,4 +1,4 @@
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
 
 export interface Props {
   children: React.ReactNode;
@@ -22,5 +22,5 @@ export function Footer({ children }: Props): JSX.Element {
     }
   `;
 
-  return <footer className={cx(atBottom, central)}>{children}</footer>;
+  return <footer css={[atBottom, central]}>{children}</footer>;
 }

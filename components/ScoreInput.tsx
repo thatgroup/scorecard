@@ -1,9 +1,9 @@
 // Libraries
 import { memo, useCallback } from "react";
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 
 // Shared
-import { yellow } from "../shared/colours";
 import { MAX_SCORE } from "../shared/constants";
 import { validateScore } from "../shared/validateScore";
 
@@ -28,6 +28,7 @@ function InnerScoreInput({
   onIncrease,
   onDecrease,
 }: Props): JSX.Element {
+  const theme = useTheme();
   const nameCell = css`
     font-size: 2em;
     font-weight: bold;
@@ -49,7 +50,7 @@ function InnerScoreInput({
   `;
 
   const currentLeader = css`
-    color: ${yellow};
+    color: ${theme.colours.yellow};
   `;
 
   const invalidScore = !validateScore(score);
@@ -70,18 +71,16 @@ function InnerScoreInput({
 
   return (
     <tr>
-      <td className={cx(nameCell, { [currentLeader]: leading })}>
-        {playerName}
-      </td>
-      <td className={buttonCell}>
+      <td css={[nameCell, leading ? currentLeader : null]}>{playerName}</td>
+      <td css={buttonCell}>
         <ScoreButton onClick={handleDecrease} disabled={minusButtonDisabled}>
           &ndash;
         </ScoreButton>
       </td>
-      <td className={scoreCell}>
+      <td css={scoreCell}>
         <ScoreDisplay score={score} notPlayed="?" />
       </td>
-      <td className={buttonCell}>
+      <td css={buttonCell}>
         <ScoreButton onClick={handleIncrease} disabled={plusButtonDisabled}>
           +
         </ScoreButton>

@@ -1,5 +1,6 @@
 // Libraries
-import { css, cx } from "@emotion/css";
+import { css } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 
 // Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
@@ -13,7 +14,6 @@ import { DividedTable } from "../components/DividedTable";
 import { Menu } from "../components/Menu";
 
 // Shared
-import { muted, pink } from "../shared/colours";
 import { getGameFromRequest } from "../shared/getGameFromCookies";
 import { getLeaderBoard } from "../shared/getLeaderBoard";
 import { getNextPage } from "../shared/getNextPage";
@@ -48,8 +48,9 @@ export async function getServerSideProps(
 }
 
 export default function Leaderboard({ game, previousUrl }: Props): JSX.Element {
+  const theme = useTheme();
   const rankCell = css`
-    color: ${pink};
+    color: ${theme.colours.pink};
     text-align: left;
     padding-right: 5px;
     width: 2em;
@@ -59,7 +60,7 @@ export default function Leaderboard({ game, previousUrl }: Props): JSX.Element {
 
   const totalCell = css`
     min-width: 1.5em;
-    color: ${muted};
+    color: ${theme.colours.muted};
     width: 2em;
   `;
 
@@ -83,8 +84,8 @@ export default function Leaderboard({ game, previousUrl }: Props): JSX.Element {
       <Menu>
         <Back href={previousUrl} />
       </Menu>
-      <Content className={center}>
-        <div className={imageWrapper}>
+      <Content css={center}>
+        <div css={imageWrapper}>
           <Image
             layout="intrinsic"
             width={384}
@@ -94,13 +95,13 @@ export default function Leaderboard({ game, previousUrl }: Props): JSX.Element {
           />
         </div>
 
-        <DividedTable className={leadboardTable}>
+        <DividedTable css={leadboardTable}>
           <tbody>
             {getLeaderBoard(game).map((ranking) => (
               <tr key={ranking.player}>
-                <td className={rankCell}>{rankToText(ranking.rank)}</td>
-                <td className={cx(nameCell, constrained)}>{ranking.player}</td>
-                <td className={totalCell}>{ranking.total}</td>
+                <td css={rankCell}>{rankToText(ranking.rank)}</td>
+                <td css={[nameCell, constrained]}>{ranking.player}</td>
+                <td css={totalCell}>{ranking.total}</td>
               </tr>
             ))}
           </tbody>

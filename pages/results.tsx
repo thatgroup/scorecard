@@ -1,5 +1,5 @@
 // Libraries
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 
 // Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
@@ -63,7 +63,7 @@ export default function Results({ game, previousUrl }: Props): JSX.Element {
       <Menu>
         <Back href={previousUrl} />
       </Menu>
-      <Content className={centerAligned}>
+      <Content css={centerAligned}>
         <Image width={300} height={300} src="/winner.png" alt="Winner" />
         <Winner game={game} />
         <Losers game={game} />
