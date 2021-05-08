@@ -1,6 +1,6 @@
 // Libraries
 import { useCallback, useEffect, useRef, useState } from "react";
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 import { css as css2, Global } from "@emotion/react";
 import type { ParsedUrlQuery } from "querystring";
 
@@ -222,14 +222,14 @@ export default function HoleNumber({ game, hole }: Props): JSX.Element {
       <Menu>
         <Back href={backHref} />
         <LinkButton
-          className={faded}
+          css={faded}
           disabled={saving}
           onClick={() => saveAndNavigate("/leaderboard")}
         >
           Leaderboard
         </LinkButton>
       </Menu>
-      <Flag colour={getHoleColour(hole)} className={flag}>
+      <Flag colour={getHoleColour(hole)} css={flag}>
         Hole {hole}
       </Flag>
       <Content>
@@ -253,7 +253,7 @@ export default function HoleNumber({ game, hole }: Props): JSX.Element {
         </DividedTable>
       </Content>
       <LinkButton
-        className={faded}
+        css={faded}
         disabled={saving}
         onClick={() => saveAndNavigate("/scorecard")}
       >
@@ -261,7 +261,7 @@ export default function HoleNumber({ game, hole }: Props): JSX.Element {
       </LinkButton>
 
       <div
-        className={css`
+        css={css`
           position: absolute;
           bottom: 4em;
           left: 0;

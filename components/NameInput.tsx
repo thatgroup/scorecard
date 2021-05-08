@@ -1,8 +1,8 @@
 // Libraries
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 
 // Shared
-import { foreground, muted, pink } from "../shared/colours";
 import { MAX_PLAYER_NAME_LENGTH } from "../shared/constants";
 
 interface Props {
@@ -12,7 +12,6 @@ interface Props {
   invalid?: boolean;
   onChange: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
 }
-
 export function NameInput({
   player,
   number,
@@ -20,6 +19,8 @@ export function NameInput({
   invalid = false,
   onChange,
 }: Props): JSX.Element {
+  const theme = useTheme();
+
   const textInput = css`
     display: block;
 
@@ -30,11 +31,11 @@ export function NameInput({
     background: transparent;
     border: none;
 
-    color: ${invalid ? pink : foreground};
+    color: ${invalid ? theme.colours.pink : theme.colours.foreground};
     transition: color 300ms;
 
     ::placeholder {
-      color: ${muted};
+      color: ${theme.colours.muted};
       opacity: 1; /* Firefox */
     }
   `;
@@ -49,7 +50,7 @@ export function NameInput({
       placeholder={`Player ${number}`}
       value={player}
       disabled={disabled}
-      className={textInput}
+      css={textInput}
       maxLength={MAX_PLAYER_NAME_LENGTH}
       onChange={onChange}
     />

@@ -1,6 +1,7 @@
 // Libraries
 import { FormEvent, useState } from "react";
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
+import { useTheme } from "@emotion/react";
 
 // Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
@@ -18,7 +19,6 @@ import { Menu } from "../components/Menu";
 import { NameInput } from "../components/NameInput";
 
 // Shared
-import { foreground, muted } from "../shared/colours";
 import { getGameFromRequest } from "../shared/getGameFromCookies";
 import {
   isPlayerInvalid,
@@ -47,6 +47,7 @@ export async function getServerSideProps(
 }
 
 export default function Players({ game }: Props): JSX.Element {
+  const theme = useTheme();
   // Pad out the player array with blank spaces so we always have at least 6 strings
   const playersFromGame = [...game.players, "", "", "", "", "", ""].slice(0, 6);
 
@@ -101,12 +102,14 @@ export default function Players({ game }: Props): JSX.Element {
 
   const header = css`
     font-size: 1.65em;
-    color: ${nonNullPlayers.length ? muted : foreground};
+    color: ${nonNullPlayers.length
+      ? theme.colours.muted
+      : theme.colours.foreground};
     transition: color 500ms;
   `;
 
   const rulesLink = css`
-    color: ${muted};
+    color: ${theme.colours.muted};
     line-height: 3rem;
   `;
 
@@ -119,7 +122,7 @@ export default function Players({ game }: Props): JSX.Element {
         <Back href="/" />
       </Menu>
       <Content>
-        <h1 className={header}>Please enter the player names below...</h1>
+        <h1 css={header}>Please enter the player names below...</h1>
         <form onSubmit={handleSave}>
           <NameInput
             number={1}
@@ -176,7 +179,7 @@ export default function Players({ game }: Props): JSX.Element {
           <Divider />
           <Link href="/rules">
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <a className={rulesLink}>Rules &amp; Safety</a>
+            <a css={rulesLink}>Rules &amp; Safety</a>
           </Link>
           <Footer>
             {isValid ? (

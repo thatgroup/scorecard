@@ -1,8 +1,10 @@
 // Libraries
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 
-// Shared
-import { muted } from "./colours";
+// Theme
+import { getTheme } from "./theme";
+
+const theme = getTheme();
 
 export const constrained = css`
   white-space: nowrap;
@@ -19,5 +21,5 @@ export const noLongPress = css`
 `;
 
 export const faded = css`
-  color: ${muted};
+  color: ${theme.colours.muted};
 `;
