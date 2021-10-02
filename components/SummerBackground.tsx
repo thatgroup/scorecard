@@ -42,7 +42,7 @@ export function SummerBackground({ animated = false }: Props): JSX.Element {
 
   const leftCloud = css`
     top: 5%;
-    left: 0;
+    left: 0%;
     max-width: 45%;
   `;
 
@@ -52,7 +52,7 @@ export function SummerBackground({ animated = false }: Props): JSX.Element {
 
   const rightCloud = css`
     top: 70%;
-    right: 0;
+    right: 0%;
     max-width: 30%;
   `;
 
