@@ -55,15 +55,15 @@ function InnerScoreInput({
 
   const invalidScore = !validateScore(score);
 
-  const handleIncrease = useCallback(() => onIncrease(playerName), [
-    onIncrease,
-    playerName,
-  ]);
+  const handleIncrease = useCallback(
+    () => onIncrease(playerName),
+    [onIncrease, playerName]
+  );
 
-  const handleDecrease = useCallback(() => onDecrease(playerName), [
-    onDecrease,
-    playerName,
-  ]);
+  const handleDecrease = useCallback(
+    () => onDecrease(playerName),
+    [onDecrease, playerName]
+  );
 
   const minusButtonDisabled = disabled || invalidScore || score === null;
   const plusButtonDisabled =

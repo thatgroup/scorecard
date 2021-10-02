@@ -166,7 +166,7 @@ export default function HoleNumber({ game, hole }: Props): JSX.Element {
           throw new Error(text);
         }
         await router.push(href);
-      } catch (error) {
+      } catch (error: unknown) {
         // TODO: Handle Error
       }
       setSaving(false);

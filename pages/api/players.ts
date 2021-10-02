@@ -23,9 +23,9 @@ export default async function (
         res.statusCode = 501;
         res.send("Not Implemented");
     }
-  } catch (error) {
+  } catch (error: unknown) {
     res.statusCode = 500;
-    res.send(error.message);
+    res.send(error instanceof Error ? error.message : "Unknown Error:" + error);
   }
 }
 
@@ -63,9 +63,11 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
     res.statusCode = 200;
     res.end();
     log(`Setting ${postedPlayers.length} player(s) on game ${gameId}`);
-  } catch (error) {
+  } catch (error: unknown) {
     res.statusCode = 400;
-    res.send(error.message);
-    log(`Error setting players: ${error.message}`);
+    const message =
+      error instanceof Error ? error.message : "Unknown Error:" + error;
+    res.send(message);
+    log(`Error setting players: ${message}`);
   }
 }

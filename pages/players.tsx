@@ -95,7 +95,7 @@ export default function Players({ game }: Props): JSX.Element {
         throw new Error("nope!");
       }
       router.push("/hole/1");
-    } catch (error) {
+    } catch (error: unknown) {
       setIsSaving(false);
     }
   };
