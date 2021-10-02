@@ -21,9 +21,9 @@ export default async function (
         res.statusCode = 501;
         res.send("Not Implemented");
     }
-  } catch (error) {
+  } catch (error: unknown) {
     res.statusCode = 500;
-    res.send(error.message);
+    res.send(error instanceof Error ? error.message : "Unknown Error:" + error);
   }
 }
 
@@ -102,10 +102,14 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
     });
     res.statusCode = 200;
     res.end();
-  } catch (error) {
+  } catch (error: unknown) {
     res.statusCode = 500;
     res.send("Failed to update game");
-    log(`Failed to update game ${gameId}: ${error.message}`);
+    log(
+      `Failed to update game ${gameId}: ${
+        error instanceof Error ? error.message : "Unknown Error: " + error
+      }`
+    );
     log(debugData);
   }
 }
