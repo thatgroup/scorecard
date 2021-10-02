@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 // Libraries
 import { render } from "../test/test-utils";
 

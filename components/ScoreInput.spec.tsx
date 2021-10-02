@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 // Libraries
 import type { ReactElement, ReactNode } from "react";
 import userEvent from "@testing-library/user-event";
