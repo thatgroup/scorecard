@@ -39,11 +39,10 @@ export function SummerBackground({ animated = false }: Props): JSX.Element {
     height: auto;
     transition: left ${STEP_MS}ms, right ${STEP_MS}ms;
   `;
-  const leftCloud = css`
-    position: absolute;
-    top: 5%;
-    left: 0;
 
+  const leftCloud = css`
+    top: 5%;
+    left: 0%;
     max-width: 45%;
   `;
 
@@ -51,14 +50,14 @@ export function SummerBackground({ animated = false }: Props): JSX.Element {
     left: -45%;
   `;
 
+  const rightCloud = css`
+    top: 70%;
+    right: 0%;
+    max-width: 30%;
+  `;
+
   const hiddenRightCloud = css`
     right: -30%;
-  `;
-  const rightCloud = css`
-    position: absolute;
-    top: 70%;
-    right: 0;
-    max-width: 30%;
   `;
 
   return (
