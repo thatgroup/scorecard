@@ -16,11 +16,9 @@ export function Back({ href }: BackProps): JSX.Element {
   `;
 
   return (
-    <Link href={href}>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a css={link}>
-        <img src="/chevron.png" aria-hidden width={7} height={10} alt="" /> Back
-      </a>
+    <Link href={href} css={link}>
+      <img src="/chevron.png" aria-hidden width={7} height={10} alt="" />
+      Back
     </Link>
   );
 }

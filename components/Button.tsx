@@ -88,11 +88,13 @@ export function Button({
 
   if (href) {
     return (
-      <Link href={href}>
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a style={style} className={className} css={buttonClassName}>
-          {contents}
-        </a>
+      <Link
+        href={href}
+        style={style}
+        className={className}
+        css={buttonClassName}
+      >
+        {contents}
       </Link>
     );
   } else {

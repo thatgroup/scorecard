@@ -17,9 +17,8 @@ export function PageLink({ href, children }: Props): JSX.Element {
   `;
 
   return (
-    <Link href={href}>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a css={[router.asPath === href ? active : null]}>{children}</a>
+    <Link href={href} css={[router.asPath === href ? active : null]}>
+      {children}
     </Link>
   );
 }

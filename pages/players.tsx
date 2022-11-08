@@ -113,83 +113,81 @@ export default function Players({ game }: Props): JSX.Element {
     line-height: 3rem;
   `;
 
-  return (
-    <>
-      <Head>
-        <title>Players</title>
-      </Head>
-      <Menu>
-        <Back href="/" />
-      </Menu>
-      <Content>
-        <h1 css={header}>Please enter the player names below...</h1>
-        <form onSubmit={handleSave}>
-          <NameInput
-            number={1}
-            player={player1Name}
-            disabled={isSaving}
-            invalid={isPlayerInvalid(player1Name, nonNullPlayers)}
-            onChange={(e) => setPlayer1Name(e.target.value)}
-          />
+  return <>
+    <Head>
+      <title>Players</title>
+    </Head>
+    <Menu>
+      <Back href="/" />
+    </Menu>
+    <Content>
+      <h1 css={header}>Please enter the player names below...</h1>
+      <form onSubmit={handleSave}>
+        <NameInput
+          number={1}
+          player={player1Name}
+          disabled={isSaving}
+          invalid={isPlayerInvalid(player1Name, nonNullPlayers)}
+          onChange={(e) => setPlayer1Name(e.target.value)}
+        />
 
-          <Divider />
-          <NameInput
-            number={2}
-            player={player2Name}
-            disabled={isSaving}
-            invalid={isPlayerInvalid(player2Name, nonNullPlayers)}
-            onChange={(e) => setPlayer2Name(e.target.value)}
-          />
-          <Divider />
+        <Divider />
+        <NameInput
+          number={2}
+          player={player2Name}
+          disabled={isSaving}
+          invalid={isPlayerInvalid(player2Name, nonNullPlayers)}
+          onChange={(e) => setPlayer2Name(e.target.value)}
+        />
+        <Divider />
 
-          <NameInput
-            number={3}
-            player={player3Name}
-            disabled={isSaving}
-            invalid={isPlayerInvalid(player3Name, nonNullPlayers)}
-            onChange={(e) => setPlayer3Name(e.target.value)}
-          />
-          <Divider />
+        <NameInput
+          number={3}
+          player={player3Name}
+          disabled={isSaving}
+          invalid={isPlayerInvalid(player3Name, nonNullPlayers)}
+          onChange={(e) => setPlayer3Name(e.target.value)}
+        />
+        <Divider />
 
-          <NameInput
-            number={4}
-            player={player4Name}
-            disabled={isSaving}
-            invalid={isPlayerInvalid(player4Name, nonNullPlayers)}
-            onChange={(e) => setPlayer4Name(e.target.value)}
-          />
-          <Divider />
+        <NameInput
+          number={4}
+          player={player4Name}
+          disabled={isSaving}
+          invalid={isPlayerInvalid(player4Name, nonNullPlayers)}
+          onChange={(e) => setPlayer4Name(e.target.value)}
+        />
+        <Divider />
 
-          <NameInput
-            number={5}
-            player={player5Name}
-            disabled={isSaving}
-            invalid={isPlayerInvalid(player5Name, nonNullPlayers)}
-            onChange={(e) => setPlayer5Name(e.target.value)}
-          />
-          <Divider />
+        <NameInput
+          number={5}
+          player={player5Name}
+          disabled={isSaving}
+          invalid={isPlayerInvalid(player5Name, nonNullPlayers)}
+          onChange={(e) => setPlayer5Name(e.target.value)}
+        />
+        <Divider />
 
-          <NameInput
-            number={6}
-            player={player6Name}
-            disabled={isSaving}
-            invalid={isPlayerInvalid(player6Name, nonNullPlayers)}
-            onChange={(e) => setPlayer6Name(e.target.value)}
-          />
-          <Divider />
-          <Link href="/rules">
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <a css={rulesLink}>Rules &amp; Safety</a>
-          </Link>
-          <Footer>
-            {isValid ? (
-              <Button arrow type="submit" disabled={isSaving}>
-                Let’s begin
-              </Button>
-            ) : null}
-          </Footer>
-        </form>
-      </Content>
-    </>
-  );
+        <NameInput
+          number={6}
+          player={player6Name}
+          disabled={isSaving}
+          invalid={isPlayerInvalid(player6Name, nonNullPlayers)}
+          onChange={(e) => setPlayer6Name(e.target.value)}
+        />
+        <Divider />
+        <Link href="/rules" css={rulesLink}>
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          Rules &amp; Safety
+        </Link>
+        <Footer>
+          {isValid ? (
+            <Button arrow type="submit" disabled={isSaving}>
+              Let’s begin
+            </Button>
+          ) : null}
+        </Footer>
+      </form>
+    </Content>
+  </>;
 }
