@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 
 // Next.JS
 import Head from "next/head";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 // Components
 import { Back } from "../components/Back";
