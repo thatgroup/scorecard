@@ -1,5 +1,6 @@
 // Libraries
 import type { ReactElement, ReactNode } from "react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import {
   AllTheProviders,
@@ -40,113 +41,132 @@ describe("<ScoreInput>", () => {
   };
 
   describe("normal cases", () => {
-    it("handles null", () => {
-      const { getByText } = render(<ScoreInput {...props} score={null} />, {
+    it("handles null", async () => {
+      render(<ScoreInput {...props} score={null} />, {
         wrapper,
       });
 
-      getByText(NOT_PLAYED);
+      screen.getByText(NOT_PLAYED);
 
-      expect(getByText(MINUS)).toBeDisabled();
-      expect(() => userEvent.click(getByText(MINUS))).toThrow();
+      expect(screen.getByText(MINUS)).toBeDisabled();
+      try {
+        await userEvent.click(screen.getByText(MINUS));
+      } catch (e) {
+        if (e instanceof Error) {
+          expect(e.message).toContain("Unable to perform pointer interaction");
+        } else {
+          throw new Error("Thrown error was the wrong type");
+        }
+      }
+
       expect(onDecrease).not.toHaveBeenCalled();
 
-      userEvent.click(getByText(PLUS));
+      await userEvent.click(screen.getByText(PLUS));
       expect(onIncrease).toHaveBeenCalled();
     });
 
-    it("handles 1", () => {
-      const { getByText } = render(<ScoreInput {...props} score={1} />, {
+    it("handles 1", async () => {
+      render(<ScoreInput {...props} score={1} />, {
         wrapper,
       });
 
-      getByText("1");
+      screen.getByText("1");
 
-      userEvent.click(getByText(MINUS));
+      await userEvent.click(screen.getByText(MINUS));
       expect(onDecrease).toHaveBeenCalled();
 
-      userEvent.click(getByText(PLUS));
+      await userEvent.click(screen.getByText(PLUS));
       expect(onIncrease).toHaveBeenCalled();
     });
 
-    it("handles 2", () => {
-      const { getByText } = render(<ScoreInput {...props} score={2} />);
+    it("handles 2", async () => {
+      render(<ScoreInput {...props} score={2} />);
 
-      getByText("2");
+      screen.getByText("2");
 
-      userEvent.click(getByText(MINUS));
+      await userEvent.click(screen.getByText(MINUS));
       expect(onDecrease).toHaveBeenCalled();
 
-      userEvent.click(getByText(PLUS));
+      await userEvent.click(screen.getByText(PLUS));
       expect(onIncrease).toHaveBeenCalled();
     });
 
-    it("handles 3", () => {
-      const { getByText } = render(<ScoreInput {...props} score={3} />);
+    it("handles 3", async () => {
+      render(<ScoreInput {...props} score={3} />);
 
-      getByText("3");
+      screen.getByText("3");
 
-      userEvent.click(getByText(MINUS));
+      await userEvent.click(screen.getByText(MINUS));
       expect(onDecrease).toHaveBeenCalled();
 
-      userEvent.click(getByText(PLUS));
+      await userEvent.click(screen.getByText(PLUS));
       expect(onIncrease).toHaveBeenCalled();
     });
 
-    it("handles 4", () => {
-      const { getByText } = render(<ScoreInput {...props} score={4} />);
+    it("handles 4", async () => {
+      render(<ScoreInput {...props} score={4} />);
 
-      getByText("4");
+      screen.getByText("4");
 
-      userEvent.click(getByText(MINUS));
+      await userEvent.click(screen.getByText(MINUS));
       expect(onDecrease).toHaveBeenCalled();
 
-      userEvent.click(getByText(PLUS));
+      await userEvent.click(screen.getByText(PLUS));
       expect(onIncrease).toHaveBeenCalled();
     });
 
-    it("handles 5", () => {
-      const { getByText } = render(<ScoreInput {...props} score={5} />);
+    it("handles 5", async () => {
+      render(<ScoreInput {...props} score={5} />);
 
-      getByText("5");
+      screen.getByText("5");
 
-      userEvent.click(getByText(MINUS));
+      await userEvent.click(screen.getByText(MINUS));
       expect(onDecrease).toHaveBeenCalled();
 
-      userEvent.click(getByText(PLUS));
+      await userEvent.click(screen.getByText(PLUS));
       expect(onIncrease).toHaveBeenCalled();
     });
 
-    it("handles 6", () => {
-      const { getByText } = render(<ScoreInput {...props} score={6} />);
+    it("handles 6", async () => {
+      render(<ScoreInput {...props} score={6} />);
 
-      getByText(SIX_PLUS);
+      screen.getByText(SIX_PLUS);
 
-      userEvent.click(getByText(MINUS));
+      await userEvent.click(screen.getByText(MINUS));
       expect(onDecrease).toHaveBeenCalled();
 
-      expect(getByText(PLUS)).toBeDisabled();
-      expect(() => userEvent.click(getByText(PLUS))).toThrow();
+      expect(screen.getByText(PLUS)).toBeDisabled();
+
+      try {
+        await userEvent.click(screen.getByText(PLUS));
+      } catch (e) {
+        if (e instanceof Error) {
+          expect(e.message).toContain("Unable to perform pointer interaction");
+        } else {
+          throw new Error("Thrown error was the wrong type");
+        }
+      }
+
       expect(onIncrease).not.toHaveBeenCalled();
     });
   });
 
   describe("error cases", () => {
     it("handles 0", () => {
-      const { getByText } = render(<ScoreInput {...props} score={0} />);
+      render(<ScoreInput {...props} score={0} />);
 
-      getByText(ERROR);
+      screen.getByText(ERROR);
 
-      expect(getByText(MINUS)).toBeDisabled();
-      expect(getByText(PLUS)).toBeDisabled();
+      expect(screen.getByText(MINUS)).toBeDisabled();
+      expect(screen.getByText(PLUS)).toBeDisabled();
     });
 
     it("handles 7", () => {
-      const { getByText } = render(<ScoreInput {...props} score={7} />);
+      render(<ScoreInput {...props} score={7} />);
 
-      getByText(ERROR);
-      expect(getByText(MINUS)).toBeDisabled();
-      expect(getByText(PLUS)).toBeDisabled();
+      screen.getByText(ERROR);
+      expect(screen.getByText(MINUS)).toBeDisabled();
+      expect(screen.getByText(PLUS)).toBeDisabled();
     });
   });
 });

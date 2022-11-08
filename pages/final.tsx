@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 
 // Next.JS
 import Head from "next/head";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 // Components
 import { Back } from "../components/Back";
@@ -34,10 +34,14 @@ export default function Final(): JSX.Element {
               ? "/summer-finalhole.png"
               : "/winter-finalhole.png"
           }
-          layout="responsive"
-          // width="100%" // TODO
-          // height="120%" // Not sure why it needs this, but next image/squashes it!
+          width={1125}
+          height={1371}
           alt="Final Hole"
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "120%", // Not sure why it needs this, but next image/squashes it!
+          }}
         />
       </div>
       <Footer>

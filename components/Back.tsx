@@ -1,6 +1,7 @@
 // Libraries
 import { css } from "@emotion/react";
 
+import Image from "next/image";
 // Next.JS
 import Link from "next/link";
 
@@ -17,8 +18,7 @@ export function Back({ href }: BackProps): JSX.Element {
 
   return (
     <Link href={href} css={link}>
-      <img src="/chevron.png" aria-hidden width={7} height={10} alt="" />
-      Back
+      <Image src="/chevron.png" aria-hidden width={7} height={10} alt="" /> Back
     </Link>
   );
 }

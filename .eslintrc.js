@@ -20,8 +20,13 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:jest-dom/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:testing-library/react",
   ],
-  plugins: ["simple-import-sort", "@next/eslint-plugin-next"],
+  plugins: [
+    "simple-import-sort",
+    "@next/eslint-plugin-next",
+    "testing-library",
+  ],
   rules: {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
@@ -58,6 +63,12 @@ module.exports = {
           // Anything that starts with a dot.
           ["^\\."],
         ],
+      },
+    ],
+    "testing-library/no-await-sync-events": [
+      "error",
+      {
+        eventModules: ["fire-event"],
       },
     ],
   },

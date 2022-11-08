@@ -1,4 +1,5 @@
 // Libraries
+import { screen } from "@testing-library/react";
 import { render } from "../test/test-utils";
 
 // Shared
@@ -25,8 +26,8 @@ describe("<Winner/>", () => {
 
     const game: Game = { players, scores };
 
-    const { getByText } = render(<Winner game={game} />);
-    getByText("adam - 18");
+    render(<Winner game={game} />);
+    screen.getByText("adam - 18");
   });
 
   it("handles multiple winners", () => {
@@ -37,7 +38,7 @@ describe("<Winner/>", () => {
 
     const game: Game = { players, scores };
 
-    const { getByText } = render(<Winner game={game} />);
-    getByText("adam, barry and clara - 18");
+    render(<Winner game={game} />);
+    screen.getByText("adam, barry and clara - 18");
   });
 });

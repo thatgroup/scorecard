@@ -206,7 +206,7 @@ export default function HoleNumber({ game, hole }: Props): JSX.Element {
   return (
     <>
       <Head>
-        <title>Hole {hole}</title>
+        <title>{`Hole ${hole}`}</title>
       </Head>
 
       <Global

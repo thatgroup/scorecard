@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 // Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import Head from "next/head";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 // Components
 import { Back } from "../components/Back";
@@ -64,7 +64,16 @@ export default function Results({ game, previousUrl }: Props): JSX.Element {
         <Back href={previousUrl} />
       </Menu>
       <Content css={centerAligned}>
-        <Image width={300} height={300} src="/winner.png" alt="Winner" />
+        <Image
+          width={300}
+          height={300}
+          src="/winner.png"
+          alt="Winner"
+          style={{
+            maxWidth: "100%",
+            height: "auto",
+          }}
+        />
         <Winner game={game} />
         <Losers game={game} />
       </Content>

@@ -5,7 +5,7 @@ import { useTheme } from "@emotion/react";
 // Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import Head from "next/head";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 // Components
 import { Back } from "../components/Back";
@@ -87,11 +87,14 @@ export default function Leaderboard({ game, previousUrl }: Props): JSX.Element {
       <Content css={center}>
         <div css={imageWrapper}>
           <Image
-            layout="intrinsic"
             width={384}
             height={94}
             src="/leaderboard.png"
             alt="Leaderboard"
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+            }}
           />
         </div>
 
@@ -107,11 +110,16 @@ export default function Leaderboard({ game, previousUrl }: Props): JSX.Element {
           </tbody>
         </DividedTable>
       </Content>
-      <img
-        width="100%"
+      <Image
+        width={1125}
+        height={647}
         src="/leaderboardfooter.png"
-        style={{ paddingTop: "3em" }}
         alt="Leaderboard footer"
+        style={{
+          width: "100%",
+          height: "auto",
+          paddingTop: "3em",
+        }}
       />
     </>
   );

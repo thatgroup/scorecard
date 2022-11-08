@@ -1,4 +1,5 @@
 // Libraries
+import { screen } from "@testing-library/react";
 import { render } from "../test/test-utils";
 
 // Components
@@ -6,38 +7,38 @@ import { ScoreDisplay } from "./ScoreDisplay";
 
 describe("<ScoreDisplay/>", () => {
   it("handles 1", () => {
-    const { getByText } = render(<ScoreDisplay score={1} />);
-    getByText("1");
+    render(<ScoreDisplay score={1} />);
+    screen.getByText("1");
   });
 
   it("handles 2", () => {
-    const { getByText } = render(<ScoreDisplay score={2} />);
-    getByText("2");
+    render(<ScoreDisplay score={2} />);
+    screen.getByText("2");
   });
 
   it("handles 3", () => {
-    const { getByText } = render(<ScoreDisplay score={3} />);
-    getByText("3");
+    render(<ScoreDisplay score={3} />);
+    screen.getByText("3");
   });
 
   it("handles 4", () => {
-    const { getByText } = render(<ScoreDisplay score={4} />);
-    getByText("4");
+    render(<ScoreDisplay score={4} />);
+    screen.getByText("4");
   });
 
   it("handles 5", () => {
-    const { getByText } = render(<ScoreDisplay score={5} />);
-    getByText("5");
+    render(<ScoreDisplay score={5} />);
+    screen.getByText("5");
   });
 
   it("handles 6", () => {
-    const { getByText } = render(<ScoreDisplay score={6} />);
-    getByText("6+");
+    render(<ScoreDisplay score={6} />);
+    screen.getByText("6+");
   });
 
   it("handles 7", () => {
-    const { getByText } = render(<ScoreDisplay score={7} />);
-    getByText("Error");
+    render(<ScoreDisplay score={7} />);
+    screen.getByText("Error");
   });
 
   it("handles null", () => {

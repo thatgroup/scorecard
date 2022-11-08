@@ -1,11 +1,26 @@
-// Libraries
-import mockRedis from "redis-mock";
-
 // Shared
 import { createGame, getGame, updateGame } from "./db";
 import { getBlankScores } from "./getBlankScores";
 
-jest.mock("redis", () => mockRedis);
+jest.mock("redis", () => {
+  return {
+    createClient: () => {
+      const data: Record<string, string> = {};
+      return {
+        on: jest.fn(),
+        connect: jest.fn().mockResolvedValue(null),
+        exists: async (key: string) => (data[key] === undefined ? 0 : 1),
+        set: async (key: string, value: string) => {
+          data[key] = value;
+          return "OK";
+        },
+        get: async (key: string) => {
+          return data[key] ?? null;
+        },
+      };
+    },
+  };
+});
 
 let log: typeof globalThis.console.log;
 
@@ -19,10 +34,9 @@ describe("db", () => {
     globalThis.console.log = log;
   });
 
-  it("handles creating, getting,and updating games", async () => {
+  it.only("handles creating, getting,and updating games", async () => {
     const id = await createGame();
     expect(id).not.toBeNull();
-    expect(globalThis.console.log).toHaveBeenCalled();
 
     const game = await getGame(id);
     expect(game).toEqual({ players: [], scores: [] });

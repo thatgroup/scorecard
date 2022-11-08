@@ -6,7 +6,7 @@ import { useTheme } from "@emotion/react";
 // Next.JS
 import type { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import Head from "next/head";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 // Components
 import { Back } from "../components/Back";
@@ -111,69 +111,69 @@ export default function Scorecard({ game, previousUrl }: Props): JSX.Element {
     overflow-x: auto;
   `;
 
-  return (
-    <>
-      <Head>
-        <title>Scorecard</title>
-      </Head>
-      <Menu>
-        <Back href={previousUrl} />
-      </Menu>
-      <Content>
-        <div css={imageWrapper}>
-          <Image
-            layout="intrinsic"
-            width={384}
-            height={94}
-            src="/scorecard.png"
-            alt="Scorecard"
-          />
-        </div>
-      </Content>
-      <div css={container}>
-        <div
-          css={css`
-            display: inline-block;
-            margin: 2em;
-          `}
-        >
-          <table css={[leadboardTable, dividedTable]}>
-            <thead>
-              <tr>
-                <th
-                  css={[
-                    mutedHeader,
-                    css`
-                      position: sticky;
-                      left: 0;
-                      background: ${theme.colours.background};
-                    `,
-                  ]}
-                >
-                  Player
+  return <>
+    <Head>
+      <title>Scorecard</title>
+    </Head>
+    <Menu>
+      <Back href={previousUrl} />
+    </Menu>
+    <Content>
+      <div css={imageWrapper}>
+        <Image
+          width={384}
+          height={94}
+          src="/scorecard.png"
+          alt="Scorecard"
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
+      </div>
+    </Content>
+    <div css={container}>
+      <div
+        css={css`
+          display: inline-block;
+          margin: 2em;
+        `}
+      >
+        <table css={[leadboardTable, dividedTable]}>
+          <thead>
+            <tr>
+              <th
+                css={[
+                  mutedHeader,
+                  css`
+                    position: sticky;
+                    left: 0;
+                    background: ${theme.colours.background};
+                  `,
+                ]}
+              >
+                Player
+              </th>
+              {HOLES.map((hole) => (
+                <th key={hole} css={[mutedHeader, scoreCell]}>
+                  {hole}
                 </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {game.players.map((player) => (
+              <tr key={player} css={playerRow}>
+                <td css={[nameCell, constrained]}>{player}</td>
                 {HOLES.map((hole) => (
-                  <th key={hole} css={[mutedHeader, scoreCell]}>
-                    {hole}
-                  </th>
+                  <td key={player + hole} css={scoreCell}>
+                    <ScoreDisplay score={getScore(player, hole)} />
+                  </td>
                 ))}
               </tr>
-            </thead>
-            <tbody>
-              {game.players.map((player) => (
-                <tr key={player} css={playerRow}>
-                  <td css={[nameCell, constrained]}>{player}</td>
-                  {HOLES.map((hole) => (
-                    <td key={player + hole} css={scoreCell}>
-                      <ScoreDisplay score={getScore(player, hole)} />
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
-    </>
-  );
+    </div>
+  </>;
 }
