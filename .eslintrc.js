@@ -13,9 +13,10 @@ module.exports = {
     },
   },
   extends: [
+    "eslint:recommended",
+    "next",
     "plugin:react/recommended", // Uses the recommended rules from @eslint-plugin-react
     "plugin:@typescript-eslint/recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
-    "plugin:prettier/recommended", // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
     "plugin:react-hooks/recommended",
     "plugin:jest-dom/recommended",
     "plugin:jsx-a11y/recommended",
@@ -26,6 +27,7 @@ module.exports = {
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
+    "react/no-unknown-property": ["error", { ignore: ["css"] }],
     "simple-import-sort/imports": [
       "error",
       {

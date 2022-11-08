@@ -37,7 +37,7 @@ export async function getServerSideProps(
   return { props: { game } };
 }
 
-export default function Home({}: Props): JSX.Element {
+export default function Home(): JSX.Element {
   const themeName = getThemeName();
   const imageContainer = css`
     width: 100%;

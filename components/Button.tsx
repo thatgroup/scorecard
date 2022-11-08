@@ -86,7 +86,7 @@ export function Button({
     </>
   );
 
-  if (!!href) {
+  if (href) {
     return (
       <Link href={href}>
         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}

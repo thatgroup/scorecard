@@ -11,7 +11,7 @@ import { getBlankScores } from "../../shared/getBlankScores";
 import { log } from "../../shared/log";
 import { validatePlayers } from "../../shared/validatePlayers";
 
-export default async function (
+export default async function playersHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
@@ -25,7 +25,7 @@ export default async function (
     }
   } catch (error) {
     res.statusCode = 500;
-    res.send(error.message);
+    res.send(error instanceof Error ? error.message : "Unknown Error");
   }
 }
 
@@ -65,7 +65,11 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
     log(`Setting ${postedPlayers.length} player(s) on game ${gameId}`);
   } catch (error) {
     res.statusCode = 400;
-    res.send(error.message);
-    log(`Error setting players: ${error.message}`);
+    res.send(error instanceof Error ? error.message : "Unknown Error");
+    log(
+      `Error setting players: ${
+        error instanceof Error ? error.message : "Unknown Error"
+      }`
+    );
   }
 }

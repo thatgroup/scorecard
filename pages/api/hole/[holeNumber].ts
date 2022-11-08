@@ -9,7 +9,7 @@ import { getGame, updateGame } from "../../../shared/db";
 import { log } from "../../../shared/log";
 import { validateScoresForHole } from "../../../shared/validateScoresForHole";
 
-export default async function (
+export default async function holeNumberHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
@@ -23,7 +23,7 @@ export default async function (
     }
   } catch (error) {
     res.statusCode = 500;
-    res.send(error.message);
+    res.send(error instanceof Error ? error.message : "Unknown Error");
   }
 }
 
@@ -105,7 +105,11 @@ async function handlePost(req: NextApiRequest, res: NextApiResponse) {
   } catch (error) {
     res.statusCode = 500;
     res.send("Failed to update game");
-    log(`Failed to update game ${gameId}: ${error.message}`);
+    log(
+      `Failed to update game ${gameId}: ${
+        error instanceof Error ? error.message : "Unknown Error"
+      }`
+    );
     log(debugData);
   }
 }

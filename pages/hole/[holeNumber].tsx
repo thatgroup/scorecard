@@ -154,7 +154,7 @@ export default function HoleNumber({ game, hole }: Props): JSX.Element {
   const [saving, setSaving] = useState(false);
   const router = useRouter();
   const saveAndNavigate = useCallback(
-    async (href) => {
+    async (href: string) => {
       try {
         setSaving(true);
         const response = await fetch(`/api/hole/${hole}`, {

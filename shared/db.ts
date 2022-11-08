@@ -1,6 +1,6 @@
 // Libraries
 import { v4 } from "uuid";
-import redis from "redis";
+import { createClient } from "redis";
 
 // Shared
 import { log } from "./log";
@@ -10,7 +10,7 @@ const { REDIS_URL, REDIS_HOST, REDIS_PORT, REDIS_PASSWORD } = process.env || {};
 const redisUrl =
   REDIS_URL || `redis://${REDIS_HOST}:${REDIS_PORT}?password=${REDIS_PASSWORD}`;
 
-const client = redis.createClient(redisUrl, {});
+const client = createClient({ url: redisUrl });
 
 client.on("error", (error) => {
   console.error(error);
@@ -26,39 +26,18 @@ process.on("SIGTERM", () => {
 });
 
 async function set(id: string, game: Game): Promise<"OK"> {
-  return new Promise((resolve, reject) => {
-    client.set(`game-${id}`, JSON.stringify(game), (err, reply) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(reply);
-      }
-    });
-  });
+  await client.set(`game-${id}`, JSON.stringify(game));
+  return "OK";
 }
 
 async function get(id: string): Promise<Game | null> {
-  return new Promise((resolve, reject) => {
-    client.get(`game-${id}`, (err, reply) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(reply ? JSON.parse(reply) : null);
-      }
-    });
-  });
+  const reply = await client.get(`game-${id}`);
+  return reply ? JSON.parse(reply) : null;
 }
 
 async function has(id: string): Promise<boolean> {
-  return new Promise((resolve, reject) => {
-    client.exists(`game-${id}`, (err, reply) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(reply === 1);
-      }
-    });
-  });
+  const reply = await client.exists(`game-${id}`);
+  return reply === 1;
 }
 
 export async function getGame(id: string): Promise<Game | null> {

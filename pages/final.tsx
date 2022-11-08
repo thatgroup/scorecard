@@ -35,8 +35,8 @@ export default function Final(): JSX.Element {
               : "/winter-finalhole.png"
           }
           layout="responsive"
-          width="100%"
-          height="120%" // Not sure why it needs this, but next image/squashes it!
+          // width="100%" // TODO
+          // height="120%" // Not sure why it needs this, but next image/squashes it!
           alt="Final Hole"
         />
       </div>
