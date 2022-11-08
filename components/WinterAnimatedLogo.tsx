@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 
+import Image from "next/image";
+
 // Shared
 import { getTheme } from "../shared/theme";
 
@@ -109,65 +111,65 @@ export function WinterAnimatedLogo(): JSX.Element {
   };
   return (
     <div css={container}>
-      <img
+      <Image
         css={outer ? hidden : visible}
         src="/winter-logo-outer-off.png"
         alt=""
         {...common}
       />
-      <img
+      <Image
         css={outer ? [visible, flickering, blueGlow] : hidden}
         src="/winter-logo-outer-on.png"
         alt=""
         {...common}
       />
 
-      <img
+      <Image
         css={tophalf ? hidden : visible}
         src="/winter-logo-tophalf-off.png"
         alt=""
         {...common}
       />
-      <img
+      <Image
         css={tophalf ? [visible, flickering, blueGlow] : hidden}
         src="/winter-logo-tophalf-on.png"
         alt=""
         {...common}
       />
 
-      <img
+      <Image
         css={victoriafalls ? hidden : visible}
         src="/winter-logo-victoriafalls-off.png"
         alt=""
         {...common}
       />
-      <img
+      <Image
         css={victoriafalls ? [visible, flickering, whiteGlow] : hidden}
         src="/winter-logo-victoriafalls-on.png"
         alt=""
         {...common}
       />
 
-      <img
+      <Image
         css={glowgolf ? hidden : visible}
         src="/winter-logo-glowgolf-off.png"
         alt=""
         {...common}
       />
-      <img
+      <Image
         css={glowgolf ? [visible, flickering, pinkGlow] : hidden}
         src="/winter-logo-glowgolf-on.png"
         alt=""
         {...common}
       />
 
-      <img
+      <Image
         css={bath ? hidden : visible}
         src="/winter-logo-bath-off.png"
         alt=""
         {...common}
       />
-      <img
+      <Image
         css={bath ? [visible, flickering, whiteGlow] : hidden}
         src="/winter-logo-bath-on.png"
         alt=""

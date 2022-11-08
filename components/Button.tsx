@@ -2,6 +2,7 @@
 import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
+import Image from "next/image";
 // Next.JS
 import Link from "next/link";
 
@@ -74,7 +75,7 @@ export function Button({
     <>
       {children}
       {arrow ? (
-        <img
+        <Image
           src="/arrow.png"
           css={image}
           width={78 / 4}

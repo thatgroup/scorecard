@@ -8,6 +8,8 @@ import {
 import { css } from "@emotion/react";
 import { useTheme } from "@emotion/react";
 
+import Image from "next/image";
+
 export type Props = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
@@ -65,7 +67,7 @@ export const DarkButton = forwardRef(
         className={className}
       >
         {children}
-        <img
+        <Image
           src="/arrow.png"
           css={image}
           width={78 / 4}
