@@ -111,69 +111,72 @@ export default function Scorecard({ game, previousUrl }: Props): JSX.Element {
     overflow-x: auto;
   `;
 
-  return <>
-    <Head>
-      <title>Scorecard</title>
-    </Head>
-    <Menu>
-      <Back href={previousUrl} />
-    </Menu>
-    <Content>
-      <div css={imageWrapper}>
-        <Image
-          width={384}
-          height={94}
-          src="/scorecard.png"
-          alt="Scorecard"
-          style={{
-            maxWidth: "100%",
-            height: "auto"
-          }} />
-      </div>
-    </Content>
-    <div css={container}>
-      <div
-        css={css`
+  return (
+    <>
+      <Head>
+        <title>Scorecard</title>
+      </Head>
+      <Menu>
+        <Back href={previousUrl} />
+      </Menu>
+      <Content>
+        <div css={imageWrapper}>
+          <Image
+            width={384}
+            height={94}
+            src="/scorecard.png"
+            alt="Scorecard"
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+            }}
+          />
+        </div>
+      </Content>
+      <div css={container}>
+        <div
+          css={css`
           display: inline-block;
           margin: 2em;
         `}
-      >
-        <table css={[leadboardTable, dividedTable]}>
-          <thead>
-            <tr>
-              <th
-                css={[
-                  mutedHeader,
-                  css`
+        >
+          <table css={[leadboardTable, dividedTable]}>
+            <thead>
+              <tr>
+                <th
+                  css={[
+                    mutedHeader,
+                    css`
                     position: sticky;
                     left: 0;
                     background: ${theme.colours.background};
                   `,
-                ]}
-              >
-                Player
-              </th>
-              {HOLES.map((hole) => (
-                <th key={hole} css={[mutedHeader, scoreCell]}>
-                  {hole}
+                  ]}
+                >
+                  Player
                 </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {game.players.map((player) => (
-              <tr key={player} css={playerRow}>
-                <td css={[nameCell, constrained]}>{player}</td>
                 {HOLES.map((hole) => (
-                  <td key={player + hole} css={scoreCell}>
-                    <ScoreDisplay score={getScore(player, hole)} />
-                  </td>
+                  <th key={hole} css={[mutedHeader, scoreCell]}>
+                    {hole}
+                  </th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {game.players.map((player) => (
+                <tr key={player} css={playerRow}>
+                  <td css={[nameCell, constrained]}>{player}</td>
+                  {HOLES.map((hole) => (
+                    <td key={player + hole} css={scoreCell}>
+                      <ScoreDisplay score={getScore(player, hole)} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  </>;
+    </>
+  );
 }

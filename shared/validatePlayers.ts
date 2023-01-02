@@ -50,12 +50,14 @@ export function validatePlayers(players: string[]): boolean {
  * @return {boolean}  {boolean}
  */
 export function validatePlayer(player: string): boolean {
-  return typeof player === "string" &&
-  player.length > 0 &&
-  player.length <= MAX_PLAYER_NAME_LENGTH &&
-  // Check that its not just white space
-  player.replace(/\s/g, "").length > 0 &&
-  ACCEPTED_CHARACTERS_REGEX.test(player);
+  return (
+    typeof player === "string" &&
+    player.length > 0 &&
+    player.length <= MAX_PLAYER_NAME_LENGTH &&
+    // Check that its not just white space
+    player.replace(/\s/g, "").length > 0 &&
+    ACCEPTED_CHARACTERS_REGEX.test(player)
+  );
 }
 
 /**
