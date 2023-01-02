@@ -1,6 +1,5 @@
 // Libraries
 import { useCallback, useEffect, useState } from "react";
-import { v4 } from "uuid";
 
 // Components
 import { Props as SnowflakeProps, Snowflake } from "./Snowflake";
@@ -9,12 +8,14 @@ const defaultTtl = 10000;
 const creationRate = 1000;
 const varySnowflakeSpeed = true;
 
+let counter = 0;
+
 export function Snowfall(): JSX.Element {
   const [flakes, setFlakes] = useState<SnowflakeProps[]>([]);
 
   // Add a snowflake to the end of the array and return the props used
   const addSnowflake = useCallback(() => {
-    const id = v4();
+    const id = (counter++).toString();
 
     // e.g. given a ttl of 10s, it will vary anywhere between 5s and 15s
     const ttl = varySnowflakeSpeed

@@ -42,7 +42,6 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
         <meta charSet="utf-8" />
         <meta name="description" content="Glow Golf Scorecard" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="https://use.typekit.net/cia7xbp.css" />
       </Head>
       <ThemeProvider theme={getTheme()}>
         <Component {...pageProps} />

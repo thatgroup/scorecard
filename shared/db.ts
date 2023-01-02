@@ -1,6 +1,7 @@
 // Libraries
-import { v4 } from "uuid";
 import { createClient, RedisClientType } from "redis";
+
+import crypto from "crypto";
 
 // Shared
 import { log } from "./log";
@@ -55,9 +56,9 @@ export async function getGame(id: string): Promise<Game | null> {
 
 export async function createGame(): Promise<string> {
   // Get a unique ID
-  let id = v4();
+  let id = crypto.randomUUID();
   while (await has(id)) {
-    id = v4();
+    id = crypto.randomUUID();
   }
   // Create the game and return the id
   log(`Creating Game ${id}`);

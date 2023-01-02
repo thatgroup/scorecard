@@ -44,7 +44,6 @@ module.exports = {
             "querystring",
             "lodash",
             "nookies",
-            "uuid",
             "redis",
             "test/test-utils$",
           ],
